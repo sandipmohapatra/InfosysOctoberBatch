@@ -1,0 +1,16 @@
+1)read the project document
+2)I will divide into groups(5 members in a team)
+3)PPT of Online travel Guide.
+i)Abstract
+ii)Use case Diagram
+iii)DFD
+iv)Form Design
+v)Output Screen
+vi)Conclusion
+vii)Feature Enhancement
+4)code execution
+5)code explanation
+6)It 8 weeks after that we have presentation.
+
+ 6pm ---to 7pm
+ 
