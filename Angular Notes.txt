@@ -1,0 +1,1630 @@
+Angular 17
+--------------------------
+1)Angular is an open source, cross platform,
+2)it provides end to end solution for building, debugging, testing and deploying.
+3)it provides testing framework like jasmine, karma, protractor.
+4)language used for angular is typescript. It support oops.(JavaScript-var)
+5)Framework supported are MVC,MVVM
+6)it is also used for cross platform mobile and web application.
+7)it is used for SPA (single page application) .
+8)it has high speed and performance is better as compared to older technology 
+used webpages.
+9)Angular use AOT compiler.[Ahead-of-time].
+*it converts typescript code into efficient JavaScript code before building phase .
+before browser downloads and runs that code.
+It provides faster rendering.
+10)Previous version used JIT compiler [just-in-time]
+*it compiles your code after the page is loaded into the browser. 
+--------------------------------------------------------------------------------------------------
+exceute in visual studio code :-
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser  
+---------------------------------------------------------------------------------------------
+steps for Installation
+--------------------------------------
+steps for Installation
+--------------------------------------
+1)npm install -g @angular/cli@15
+2)C:\projects-workspace>ng new batch237
+3)C:\projects-workspace\batch201>ng serve 
+4)Browser- Application starts on Live Server listening on http://localhost:4200
+To create subfolders
+5)C:\Users\sandip\Desktop\amazon\src\app>ng g c Register 
+--------------------------------------------------------------------------------------------------
+6)npm install bootstrap
+----------------------------------------------------------------------------------------------------
+angular.json
+---------------------------------------------------
+ "styles": [
+              "src/styles.css",
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css"
+            ],
+-------------------------------------------------------------------------------------------
+
+App folder
+--------------------
+1)app.component.html-------------Presentation(View)
+2)app.component.ts ----------------Logic
+3)app.component.css----------------styles
+4)app.component.spec.tc-----------Testing
+-----------------------------------------------------------------
+app.module.ts
+----------------------
+1)it contains the list of files used in your project.
+2)every modules or library that you want to use in your project should be configured 
+in app.module.ts
+3)In a project there will be many folder each folder will have .html,.css,.ts,.spec.tc
+but only one app.module.ts
+--------------------------------------
+1)NgModule({}) :- information about your application provided to complier.
+2)declaration :- registers your component.//components are classes in Angular.
+3)imports:- registers your modules.
+4)provider:- registers your services.//functions 
+5)bootstrap:-specify the component to start with.
+------------------------------------------------------------------------------
+@Component :-
+----------------------
+1)It is derived from "Component" base of "@angular/core" library.
+2)every component in angular is comprises of presentation,logic and styles.
+3)logic is written in typescipt which is compiled into javascript.
+4)@Compoment ({property:value,property:value})
+5)@Component() Decorator that marks a class as an Angular component. and provides configuration metadata that determines how the component should be processed,instantiated and used at runtime.
+*how it will function :- feedback,contact,registration
+
+1)selector :<app-home></app-home> .This is from index.html.
+2)template:Here directly we write the html code to render.
+3)templateUrl:Here we give the path of the html file.
+4)styles:It is a collection of style properties and their values.
+5)styleUrls:It can access styles from an enternal stylesheet.
+6)animations:it use a set of CSS keyframes to use for animations.
+--------------------------------------------------------------------------------------------
+Data binding
+-------------------------
+<input type=text name=t1 size=20>
+t1=sandip
+---------------------------------------------------------------
+There are 2 ways of data binding
+--------------------------------------------------
+one way data binding
+1)interpolation
+we use double curly braces {{}} and is known as interpolation or template expression.
+example:- 
+we are assigning some value in the "app.component.ts" and the value displayed on the html page.
+{{name}}
+<p>The sum of 6 and 7 is {{6+7}} </p>
+<p>The multiplcation of 6 and 7 is {{6*7}} </p>
+--------------------------------------------------------------------
+2)property binding
+------------------------------
+In this we use square brackets to the DOM properties.
+example:-
+<img[src]="shoe.jpg">
+-------------------------------------------------------------------
+3)event binding
+-----------------------
+in this we use circular brackets .it is mostly used with buttons.
+we put event in parentheses.
+example:-
+<button (click)="onSave()">Save</button>
+
+2)two way data binding
+---------------------------------------
+In this user can update the entry .A change made to the user entry in the html input element we require two-way binding.
+example
+Enter your name<input type=text name=t1 size=20> 
+
+[(value)] ="expression";
+Enter your name<input type=text [(ngModel)]="name">
+----------------------------------------------------------------------------------------
+app.module.ts
+---------------------------
+1)import { FormsModule } from '@angular/forms';
+2)import[FormsModule]
+FormsModule ==>package
+@angular/forms ==>Library
+---------------------------------------------------------------------------------------------------------- 
+In 2 way binding we have 
+MVC -Angular follow it.
+
+Model---------data stored and updated
+view -----------The output screen
+controller-----The .ts file 
+-----------------------------------------------------------------------------------------------------------------
+one way binding
+-------------------------
+oneway.component.ts
+-----------------------------------
+Example-2
+------------------------------------------
+selector:'app-root';
+templateUrl:'oneway.component.html';
+export class OnewayComponent
+{
+public product=
+{
+Name:'Samsung TV',
+Price:45000.44,
+}
+}
+----------------------------------------------------
+<dl>
+<dt>Name</dt>
+<dd>{{product.Name}}</dd>
+<dd><input type=text value={{product.Name}}></dd>
+<dt>Price</dt>
+<dd>{{product.Price}}</dd>
+<dd><input type=text value={{product.Price}}></dd>
+<dd innerHTML={{product.Price}}></dd>
+</dl>
+--------------------------------------------------------------------
+Example-2
+--------------------
+Example-2
+---------------------
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-example2',
+  template: `
+  <p> Hello my name is {{name}}</p>
+  <p> Hello my email is {{email}}</p>
+  <p> Hello my Address is {{address.street}} {{address.loc}} {{address.state}} {{address.city}}</p>
+  <p><Button (click)="sayName()">Say my Details</Button></p>`
+  
+})
+export class Example2Component 
+{
+name:String;
+email:String;
+address:any;
+constructor()
+{
+this.name='sandip Kumar';
+this.email='sandip@gmail.com';
+this.address=
+{
+  street:'MC Road',
+  loc:'Sivaji nagar',
+  state:'Karnataka',
+  city:'Bangalore'
+}
+}
+sayName()
+{
+console.log("My name is ",this.name);
+console.log("My email is ",this.email);
+console.log("My address is ",this.address);
+} }
+-------------------------------------------------------------
+
+
+create folder
+---------------------
+1)desktop/flipcard/src/app>ng g c oneway --skipTests
+
+oneway
+ 	oneway.component.ts
+	oneway.component.css
+	oneway.component.html
+*automatically app.module.ts will be updated
+-------------------------------------------------------------
+2)change in index.html <-----<app-root></app-root>
+3)change in bootstrap[OnewayComponent]   <--app.module.ts
+
+------------------------------------------------------------------
+oneway.component.ts
+----------------------------------
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './Oneway.component.html'
+  })
+export class OnewayComponent {
+    public product = {
+      Name: 'Samsung TV',
+      Price: 45000.55
+    };
+ }
+-----------------------------------------------------------
+oneway.component.html
+-------------------------------------
+<div class="container">
+    <h2>Product Details</h2><hr>
+    <dl>
+        <dt>Name</dt>
+        <dd>{{product.Name}}</dd>
+        <dt>Price</dt>
+        <dd innerHTML="{{product.Price}}"></dd>
+	<dt>Location</dt>
+        <dd innerHTML="{{product.Location}}"></dd>
+    </dl>
+  </div>
+-------------------------------------------------------------------------
+1)create folder by name :- twowaybinding
+desktop/flipcard/src/app>ng g c twowaybinding --skipTests
+2)change in index.html
+3)change in app.module.ts
+--------------------------------------------------------------------------
+assignment-1
+wap to enter your name,address,phoneno,email.
+
+use [(ngModule)] to update the input.
+-----------------------------------------------------------------------------
+1. twowaybinding.component.ts
+--------------------------------------------------
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-twowaybinding',  <---index.html
+  templateUrl: './twowaybinding.component.html',
+  styleUrls: ['./twowaybinding.component.css']
+})
+export class TwowaybindingComponent  <---app.module.ts (bootstrap)
+{  
+ public name = 'Samsung TV';  <----global variable (you can access through out the application)
+ public city = 'Delhi';
+ public inStock = true;
+ public product = {   
+ Name: '',				<---local variables  
+ City: '',
+ InStock: false
+ };
+ public UpdateClick() {
+   this.product = {
+     Name: this.name,
+     City: this.city,
+     InStock: this.inStock
+   };
+ }
+}
+---------------------------------------------------------------------------------------------
+2. twowaybinding.component.html
+-------------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+<h2 class="text-center text-primary">Two Way Binding</h2>
+<div class="row">
+  <div class="col-3">
+    <div class="form-group">
+        <label>Name</label>
+        <div>
+            <input [(ngModel)]="name" type="text" class="form-control">
+        </div>
+    </div>
+    <div class="form-group">
+      <label>Shipped To</label>
+      <div>
+          <select [(ngModel)]="city" class="form-control">
+            <option>Delhi</option>
+            <option>Hyderabad</option>
+          </select>
+      </div>
+    </div>
+    <div class="form-group">
+        <label>Is In Stock</label>
+        <div>
+            <input [(ngModel)]="inStock" type="checkbox"> Yes
+        </div>
+    </div>
+    <div class="form-group">
+      <button (click)="UpdateClick()" class="btn btn-primary btn-block">Update</button>
+    </div>
+  </div>
+  <div class="col-9">
+    <table class="table table-hover">
+        <colgroup span="1" style="background-color: aquamarine;"></colgroup>
+        <tr>
+            <td>Name</td>
+            <td [innerHTML]="product.Name"></td>
+        </tr>
+        <tr>
+            <td>Shipped To</td>
+            <td>{{product.City}}</td>
+        </tr>
+        <tr>
+            <td>Stock Status</td>
+            <td>{{(product.InStock==true)?"Available":"Out of Stock"}}</td>
+        </tr>
+    </table>
+  </div>
+</div>
+</div>
+</body>
+ -----------------------------------------------------------------------------
+1. ifdemo.component.ts(Directives)
+
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-ifdemo',
+  templateUrl: './ifdemo.component.html',
+  styleUrls: ['./ifdemo.component.css']
+})
+export class IfdemoComponent {
+   public product = {
+     Name: 'Nike Casuals',
+     Price: 4500.55,
+     Photo: 'assets/shoe.jpg'
+   };
+  
+ public showImage = false;
+   public btnText = 'Show';
+
+   public TogglePreview() 
+{
+      this.showImage = (this.showImage==false)?true:false;
+      this.btnText = (this.btnText=='Show')?'Hide':'Show';
+   }
+}
+
+-------------------------------------------------------------------------------
+2. ifdemo.component.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+
+<div class="container-fluid">
+<h2
+<div class="row">
+  <div class="col-3">
+      <dl>
+          <dt>Name</dt>
+          <dd>{{product.Name}}</dd>
+          <dt>Price</dt>
+          <dd>{{product.Price}}</dd>
+      </dl>
+      <button (click)="TogglePreview()" class="btn btn-primary btn-sm btn-block">{{btnText}} Preview</button>
+  </div>
+  <div class="col-9">
+    <div *ngIf="showImage">
+        <img [src]="product.Photo" height="200" width="200" >
+       <img src="assets/shoe.jpg" height="200" width="200" >
+    </div>
+  </div>
+</div>
+</div>
+----------------------------------------------------------------------------------------------------- 
+Example-7(ngSwitch)
+1.Switchdemo.component.ts
+
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-switchdemo',
+  templateUrl: './switchdemo.component.html',
+  styleUrls: ['./switchdemo.component.css']
+})
+export class SwitchdemoComponent{
+   public product = {
+     Name: 'Nike Casuals',
+     Price: 4500.55,
+     Photo: 'assets/shoe.jpg',
+     Description: 'Something about Nike Casuals...'
+   };
+   public selectedView = 'info';
+   public views = ['info', 'preview', 'more'];
+   public ChangeView(obj:any)
+ {
+      this.selectedView = obj.target.name;
+   }
+ 
+}
+--------------------------------------------------------------------------------------------------
+2.Switchdemo.component.html
+<div class="container-fluid">
+ <h2 class="text-primary text-center"><span class="fa fa-shopping-cart"></span>Amazon Shopping</h2>
+ <div class="btn-toolbar bg-danger justify-content-between">
+  <div class="btn-group">
+    <button (click)="ChangeView($event)" name="info" class="btn btn-danger">Basic Details</button>
+    <button (click)="ChangeView($event)" name="preview" class="btn btn-danger">Preview</button>
+    <button (click)="ChangeView($event)" name="more" class="btn btn-danger">More..</button>
+  </div>
+  </div>
+ <div class="row" style="margin: 20px;">
+    <!--Main Container-->
+  <div [ngSwitch]="selectedView">
+    <!--info card-->    
+    <div class="card" *ngSwitchCase="'info'">
+        <div class="card-header">
+            <h2>{{product.Name}}</h2>
+        </div>
+        <div class="card-body">
+            <h4>{{product.Price}}</h4>
+        </div>
+    </div>
+    <!--Preview card-->
+    <div class="card" *ngSwitchCase="'preview'">
+        <div class="card-body">
+            <img [src]="product.Photo" width="200" height="200" >
+        </div>
+    </div>
+    <!--Description Card-->
+    <div class="card" *ngSwitchCase="'more'">
+        <div class="card-header">
+            <h3>Description</h3>
+        </div>
+        <div class="card-body">
+            <p>{{product.Description}}</p>
+        </div>
+    </div>
+  </div>
+ </div>
+</div>
+-------------------------------------------------------------------------------
+Example-8(ngFor)
+1.fordemo.component.ts
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-fordemo',
+  templateUrl: './fordemo.component.html',
+  styleUrls: ['./fordemo.component.css']
+})
+export class FordemoComponent {
+  public categories = ['Electronics', 'Footwear', 'Fashion'];
+  public menudata = [
+    {Category: 'Electronics', Products: ['Samsung TV', 'JBL Speaker']},
+    {Category: 'Footwear', Products: ['Nike Casuals', 'Lee Cooper Boot']}
+  ];
+}
+-----------------------------------------------------------------------------------------------------------------
+2.fordemo.component.html
+<div class="container-fluid">
+ <div class="row">
+  <div class="col-3">
+    <h3>Categories</h3>
+    <ol>
+        <li *ngFor="let item of categories">{{item}}</li>
+    </ol>
+  </div>
+  <div class="col-3">
+    <h3>Categories</h3>
+    <select class="form-control">
+        <option *ngFor="let item of categories">
+            {{item}}
+        </option>
+    </select>
+  </div>
+  <div class="col-3">
+    <h3>Categories</h3>
+    <table class="table table-hover">
+      <tbody>
+          <tr *ngFor="let item of categories">
+              <td><a href="#">{{item}}</a></td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+ </div>
+ <div class="row" style="margin-top: 20px;">
+    <div class="col-3">
+        <h3>Menu</h3>
+        <ol>
+            <li *ngFor="let item of menudata">
+                {{item.Category}}
+                <ol type="a">
+                    <li *ngFor="let product of item.Products">
+                        {{product}}
+                    </li>
+                </ol>
+            </li>
+        </ol>
+    </div>
+    <div>
+        <h3>Menu</h3>
+        <select class="form-control">
+            <optgroup *ngFor="let item of menudata" label="{{item.Category}}">
+                <option *ngFor="let product of item.Products">
+                    {{product}}
+                </option>
+            </optgroup>
+        </select>
+    </div>
+    <div class="col-3">
+        <h3>Menu</h3>
+        <div *ngFor="let item of menudata">
+            <details>
+                <summary>{{item.Category}}</summary>
+                <ol>
+                    <li *ngFor="let product of item.Products">
+                        {{product}}
+                    </li>
+                </ol>
+            </details>
+        </div>
+    </div>
+ </div>
+</div>
+-------------------------------------------------------------------------------------------------------------------------------
+step 1)src/app>ng g c shoppingcart --skipTests
+step 2)change in index.html-----------<app-shoppingcart></app-shoppingcart>
+step 3)bootstrap[ShoppingcartComponent]
+step 4)(jblspeaker.jpg) download and store in assets folder.
+-------------------------------------------------------------------------
+
+example-9
+--------------------
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-shoppingcart',
+  templateUrl: './shoppingcart.component.html',
+  styleUrls: ['./shoppingcart.component.css']
+})
+export class ShoppingcartComponent {
+ public categories = ['Select a Category', 'Electronics', 'Footwear', 'Fashion'];
+ public electronics = ['Select Electronics', 'JBL Speaker', 'Earpods'];
+ public footwear = ['Select Footwear', 'Nike Casuals', 'Lee Cooper Boot'];
+ public fashion = ['Select Fashion', 'Shirt', 'Jeans'];
+ public data = [
+  {Name: 'JBL Speaker', Price: 4500.55, Photo: 'assets/jblspeaker.jpg'},
+  {Name: 'Earpods', Price: 3000.44, Photo: 'assets/earpods.jpg'},
+  {Name: 'Nike Casuals', Price: 6000.44, Photo: 'assets/shoe.jpg'},
+  {Name: 'Lee Cooper Boot', Price: 2000.44, Photo: 'assets/shoe1.jpg'},
+  {Name: 'Shirt', Price: 1000.44, Photo: 'assets/shirt.jpg'},
+  {Name: 'Jeans', Price: 4000.44, Photo: 'assets/jeans.jpg'},
+ ];
+ public products = [];
+ public selectedCategoryName = 'Select a Category';
+ public selectedProductName;
+ public searchResults = [];
+ public searchedProduct = {
+   Name: '',
+   Price: 0,
+   Photo: ''
+ };
+ public cartItems = [];
+ public cartItemsCount = 0;
+ public showCart = false;
+ public GetCartItemsCount(){
+   this.cartItemsCount = this.cartItems.length;
+ }
+ public OnCategoryChange(){
+   switch(this.selectedCategoryName)
+   {
+     case 'Electronics':
+       this.products = this.electronics;
+       break;
+     case 'Footwear':
+       this.products = this.footwear;
+       break;
+     case 'Fashion':
+       this.products = this.fashion;
+       break;
+     default:
+       this.products = ['Select a Category'];
+       break;
+   }
+ }
+ public onProductChanged(){
+     this.searchResults = this.data.filter(x=>x.Name==this.selectedProductName);
+     this.searchedProduct = {
+       Name: this.searchResults[0].Name,
+       Price: this.searchResults[0].Price,
+       Photo: this.searchResults[0].Photo
+     };
+ }
+ public AddToCartClick() {
+    this.cartItems.push(this.searchedProduct);
+    alert('Item Added to Cart');
+    this.GetCartItemsCount();
+ }
+ public ToggleCartDisplay() {
+   this.showCart = (this.showCart==false)?true:false;
+ }
+ public DeleteCartItem(index){
+    let confirmDelete = confirm('Are you sure, want to Delete?');
+    if(confirmDelete==true) {
+      this.cartItems.splice(index, 1);
+      this.GetCartItemsCount();
+    }
+ }
+}
+------------------------------------------------------------------------------------------------------
+Shoppingcart.component.html
+--------------------------------------------
+<div class="container-fluid">
+  <h2 class="text-center text-primary"><span class="fa fa-shopping-cart"></span>Amazon - Shopping</h2>
+  <div class="row">
+    <div class="col-3">
+        <div class="form-group">
+            <label>Select a Category</label>
+            <div>
+                <select (change)="OnCategoryChange()" [(ngModel)]="selectedCategoryName" class="form-control">
+                    <option *ngFor="let item of categories">
+                        {{item}}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Select a Product</label>
+            <div>
+                <select (change)="onProductChanged()" [(ngModel)]="selectedProductName" class="form-control">
+                    <option *ngFor="let item of products">
+                        {{item}}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Preview</label>
+            <div class="card">
+                <div class="card-header">
+                    <h3>{{searchedProduct.Name}}</h3>
+                </div>
+                <div class="card-body text-center">
+                    <img [src]="searchedProduct.Photo" width="200" height="200">
+                </div>
+                <div class="card-footer text-center">
+                    <h3>{{searchedProduct.Price | currency:'INR'}}</h3>
+                    <button (click)="AddToCartClick()" class="btn btn-danger btn-block"> <span class="fa fa-shopping-cart"></span>Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div>
+            <table *ngIf="showCart" style="margin-top: 100px;" class="table table-hover">
+                <caption>Your Cart Items</caption>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Preview</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of cartItems; let i=index">
+                        <td>{{item.Name}}</td>
+                        <td>{{item.Price}}</td>
+                        <td><img width="50" height="50" [src]="item.Photo"></td>
+                        <td>
+                            <button (click)="DeleteCartItem(i)" class="btn btn-outline-danger"> <span class="fa fa-trash"></span> </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-3">
+        <div>
+            <button (click)="ToggleCartDisplay()" class="btn btn-danger btn-block"><span class="fa fa-shopping-cart"></span> [{{cartItemsCount}}] Your Cart Items</button>
+        </div>
+        
+    </div>
+  </div>
+</div>
+------------------------------------------------------------------------------------------------------
+class Employee {
+    empCode: number;
+    empName: string;
+
+    constructor(code: number, name: string) {
+        this.empName = name;
+        this.empCode = code;
+    }
+
+    display = () => console.log(this.empCode +' ' + this.empName)
+}
+let emp = new Employee(1, 'Ram');
+emp.display();
+------------------------------------------------------------------------------------------
+Angular Pipe
+---------------------------
+1)Pipe is used to transform data.
+2)Data may come to angular from various source so the data type of source provider and datatype of the typescript will not match.so it will not display in proper format .so pipe will transform the data and display in desired format.
+3)pipes are used for formatting and filtering the data.
+4)All pipes are derived from 'PipeTransform' .
+5)import {PipeTransform} from '@angular/core'
+6)we have some pre-defined pipes and we can also create custom pipes.
+7)Every pipe is defined with a pipe name,which is configured using "@Pipe()".
+@Pipe({name:"uppercase"})
+8)Every pipe implements  "PipeTransform" and use the transform() method.
+export class Uppercase implements PipeTransform
+{
+transform(value)
+{ return value;}}
+-----------------------------------------------------------------
+example :1
+----------------------
+app.component.ts file.
+-------------------------------------------
+import { Component } from '@angular/core';
+@Component ({ 
+   selector: 'my-app', 
+   templateUrl: 'app/app.component.html' 
+}) 
+export class AppComponent { 
+   TutorialName: string = 'Angular JS'; 
+   appList: string[] = ["Binding", "Display", "Services"]; 
+} 
+-----------------------------------------------------------------------
+app.component.html file.
+-------------------------------------------------------------------------
+<div> 
+   The name of this Tutorial is {{TutorialName}}<br>  
+   The first Topic is {{appList[0] | uppercase }}<br> 
+   The second Topic is {{appList[1] | uppercase }}<br> 
+   The third Topic is {{appList[2]| uppercase }}<br> 
+</div>
+
+----------------------------------------------------------------------------------------
+Example :-
+Pre-defined Pipes
+-----------------------------------
+import { Component } from '@angular/core';
+@Component({
+  selector: 'app-pipeexample1',
+  templateUrl: './pipeexample1.component.html',
+  styleUrls: ['./pipeexample1.component.css']
+})
+export class Pipeexample1Component  
+{
+  TutorialName: string = 'Angular JS'; 
+  appList: string[] = ["Binding data", "Display device", "Services oriented"]; 
+public product = {
+  Name:'Samsung TV',
+  Price:45000.50,
+  Mfd:new Date('2021-02-02')
+}}
+---------------------------------------------------------------------------------------------
+<div> 
+    The name of this Tutorial is {{TutorialName}}<br>  
+    The first Topic is {{appList[0] | titlecase }}<br> 
+    The second Topic is {{appList[1] | titlecase }}<br> 
+    The third Topic is {{appList[2]| titlecase }}<br> 
+    The product name is {{product.Name | titlecase}}<br>
+    The product price is {{product.Price}}<br>
+    The product price is {{product.Price|number}}<br>
+    The product price is {{product.Price|currency}}<br>
+    The product price is {{product.Price|currency:'INR'}}<br>
+    The product price is {{product.Price|currency:'&#8377;'}}<br>
+    The product date is {{product.Mfd|date:'MMM-dd-yyyy'}}<br>
+    The product date is {{product.Mfd|date:'shortDate'}}<br>
+    The product Date is {{product|json}}<br/>    
+    The Canadian dollar {{1234567 | currency:'CAD':'symbol' :'1.2-5'}}<br>
+    The first Topic is {{appList[0] | slice:1:2}}<br> 
+    The second Topic is {{appList[1] | slice:1:3}}<br> 
+   The third Topic is {{appList[2]| slice:2:3}}<br> 
+    
+ </div>
+
+-----------------------------------------------------------------------------------------
+Angular  also has the facility to create custom pipes. The general way to define a custom pipe is as follows.
+syntax:-
+----------------
+import { Pipe, PipeTransform } from '@angular/core';  
+@Pipe({name: 'Pipename'}) 
+
+export class Pipeclass implements PipeTransform 
+{ 
+   transform(parameters): returntype 
+{ } 
+} 
+--------------------------------------------------------------------------------------
+Where,
+
+'Pipename' - This is the name of the pipe.
+
+Pipeclass - This is name of the class assigned to the custom pipe.
+
+Transform - This is the function to work with the pipe.
+
+Parameters - This are the parameters which are passed to the pipe.
+
+Returntype - This is the return type of the pipe.
+----------------------------------------------------------------------------------
+step-1)create folder multiplier
+step-2)
+--------------------------------------------------------------
+multiplier.component.ts
+---------------------------------------------------------------------
+import {Component} from '@angular/core';
+@Component ({
+  selector: 'app-multiplier',
+  template:`
+  <p>Multiplier {{5 | Multiplier: 20}}</p> <br />
+  
+  <p>Multiplier {{2 | Multiplier: 20}}</p> <br />
+  
+  <p>Multiplier {{4 | Multiplier: 20}}</p> <br />
+   `
+})
+export class MultiplierComponent
+{}
+-----------------------------------------------------------------------------------
+step 3) create a file inside multiplier folder
+-----------------------------------------------------------
+multiplier.pipe.ts (new pipe is defined) //this custom pipe have to be separate
+--------------------------------------------------------------
+import {Pipe,PipeTransform} from '@angular/core';
+
+@Pipe({name: 'Multiplier'})
+
+export class Multiplierpipe implements PipeTransform
+{
+    transform(value:number, multiply: number):number
+    {
+        return multiply * value
+    }
+}
+
+--------------------------------------------------------------------------------------
+app.module.ts
+----------------------------------------------------------------------------------------
+import { NgModule }      from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+
+import { AppComponent }  from './app.component';
+import {FormsModule} from  '@angular/forms';
+import { Multiplierpipe } from './multiplier/multiplier.pipe';
+
+@NgModule({
+  imports:      [ BrowserModule],
+  declarations: [ AppComponent ,Multiplierpipe],
+  bootstrap:    [ MultiplierComponent ]
+})
+export class AppModule { }
+
+----------------------------------------------------------------------------------------------
+
+import {Pipe,PipeTransform} from '@angular/core';
+@Pipe({name: 'sentencecase'})
+
+export class SentenceCase implements PipeTransform
+{
+    transform(str)
+    {
+        let firstChar=str.charAt(0);
+        let restChars=str.substring(1);
+        let sentence=firstChar.toUpperCase()+restChars.toLowerCase();
+        return sentence;
+    }
+}
+-------------------------------------------------------------------------------------
+import { Component } from '@angular/core';
+@Component({
+  selector: 'app-multiplier',
+ templateUrl:'multiplier.component.html'
+   
+ })
+export class MultiplierComponent 
+ {
+public msg='welcome to Angular 10';
+   }
+-----------------------------------------------------------------------
+
+Example-10
+--------------------------------------------------------------------------------
+	Likesdemo.component.ts
+-------------------------------------------------------------------------------
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-likesdemo',
+  templateUrl: './likesdemo.component.html',
+  styleUrls: ['./likesdemo.component.css']
+})
+export class LikesdemoComponent{
+   public products = [
+     {Name: 'JBL Speaker', Photo: 'assets/jblspeaker.jpg', Likes: 0, Dislikes: 0},
+     {Name: 'Nike Casuals', Photo: 'assets/shoe.jpg', Likes: 0, Dislikes: 0},
+     {Name: 'Shirt', Photo: 'assets/shirt.jpg', Likes: 0, Dislikes: 0}
+   ];
+   public LikesCounter(item){
+       item.Likes++;
+   }
+   public DislikesCounter(item){
+        item.Dislikes++;
+   }
+}
+-----------------------------------------------------------------------------------
+	Likesdemo.component.html
+--------------------------------------------------------------
+<div class="container-fluid">
+ <h2>Products Catalog</h2>
+ <div class="card-deck">
+    <div class="card" *ngFor="let item of products">
+        <div class="card-header">
+            <h3>{{item.Name}}</h3>
+        </div>
+        <div class="card-body">
+            <img width="200" height="200" [src]="item.Photo" >
+        </div>
+        <div class="card-footer">
+           <div class="btn-group">
+            <button (click)="LikesCounter(item)" class="btn btn-success">[{{item.Likes}}]<span class="fa fa-thumbs-up"></span> Like(s)</button>
+            <button (click)="DislikesCounter(item)" class="btn btn-danger">[{{item.Dislikes}}]<span class="fa fa-thumbs-down">Dislike(s)</span></button>
+           </div>
+        </div>
+    </div>
+</div>
+</div>
+
+-----------------------------------------------------------------------------------------------------
+---------------------------------------------------------------
+Example-11
+---------------------------------------------------------------
+	Keybinding.component.ts
+---------------------------------------------------------------
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-keybinding',
+  templateUrl: './keybinding.component.html',
+  styleUrls: ['./keybinding.component.css']
+})
+export class KeybindingComponent{
+  public users = [
+    {UserName: 'john'},
+    {UserName: 'john12'},
+    {UserName: 'john_nit'},
+    {UserName: 'david'}
+  ];
+  public userName;
+  public userMsg;
+  public isUserValid = false;
+  public isUserInvalid = false;
+
+  public password;
+  public showCapsWarning = false;
+
+  public VerifyUserOnKeyUp(){
+    if (this.userName.length < 3) {
+      this.userMsg = 'User Name too short..';
+      this.isUserInvalid = true;
+      this.isUserValid = false;
+    } else {
+      for(var item of this.users)
+ {
+        if(item.UserName == this.userName) 
+{
+          this.userMsg = 'User Name Taken - Try Another';
+          this.isUserInvalid = true;
+          this.isUserValid = false;
+          break;
+        } else {
+          this.userMsg = 'User Name Available';
+          this.isUserInvalid = false;
+          this.isUserValid = true;
+        }
+      }
+    }
+  }
+  public VerifyPassword(e){
+      if(e.keyCode>=65 && e.keyCode<=90) 
+{
+          this.showCapsWarning = true;
+      } else {
+        this.showCapsWarning = false;
+      }
+  }
+}
+------------------------------------------------------------------------------------------------
+	Keybinding.component.html
+--------------------------------------------------------------------------------------
+<div class="container-fluid">
+  <h2>Register User</h2>
+  <div class="form-group">
+    <label>User Name</label>
+    <div>
+        <input [ngClass]="{'errorStyle':isUserInvalid, 'validStyle':isUserValid}" (keyup)="VerifyUserOnKeyUp()" [(ngModel)]="userName" type="text" class="form-control">
+        <span [ngClass]="{'text-success':isUserValid, 'text-danger':isUserInvalid}">{{userMsg}}</span>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Password</label>
+    <div>
+        <input (keypress)="VerifyPassword($event)" [(ngModel)]="password" type="password" class="form-control">
+        <div *ngIf="showCapsWarning">
+            <span class="fa fa-exclamation-triangle text-warning"></span>
+            <span class="text-warning">Warning CAPS is ON</span>
+        </div>
+    </div>
+  </div>
+</div>
+--------------------------------------------------------------------------------------------
+	Keybinding.component.css
+----------------------------------------------------------------
+.container-fluid {
+    margin:auto;
+    padding:20px;
+    width:300px;
+    align-items: center;
+    justify-content: center;
+}
+.errorStyle {
+    border:1px solid red;
+    box-shadow: 2px 3px 4px red;
+}
+.validStyle {
+    border:1px solid green;
+    box-shadow: 2px 3px 4px green;
+}
+----------------------------------------------------------------------
+example-12
+----------------------------------------------------------------------
+	Eventsdemo.component.ts
+----------------------------------------------------------------------
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-eventsdemo',
+  templateUrl: './eventsdemo.component.html',
+  styleUrls: ['./eventsdemo.component.css']
+})
+export class EventsdemoComponent {
+    public msg;
+    public txtName;
+    public OnFocus() {
+      this.msg = 'Name in Block Letters';
+    }
+    public OnBlur() {
+      this.msg = '';
+      this.txtName = this.txtName.toUpperCase();
+    }
+    public onCut(){
+      this.msg = 'Removed and Placed on Clipboard';
+    }
+    public onCopy(){
+      this.msg = 'Copied to Clipboard';
+    }
+    public onPaste() {
+      this.msg = 'Inserted from Clipboard';
+    }
+}
+----------------------------------------------------------------
+	Eventsdemo.component.html
+----------------------------------------------------------------
+<div class="container-fluid">
+  <h2>Register for Cut/copy/paste</h2><hr>
+  <div class="form-group">
+      <label>User Name</label>
+      <div>
+          <input (cut)="onCut()" (copy)="onCopy()" (paste)="onPaste()" [(ngModel)]="txtName" (focus)="OnFocus()" (blur)="OnBlur()" class="form-control" type="text" placeholder="Block Letters Only">
+          <span>{{msg}}</span>
+      </div>
+  </div>
+</div>
+------------------------------------------------------------------------------
+Key Event Binding
+---------------------------------
+you can handle the interaction based on keys like
+i)Keyup :- when key is released.
+ii)KeyDown :- when user hold down a key
+iii)KeyPress:-when user finish a key and use another.
+iv)keyCode:- it return the actual keycode.This is ascii code A=65,Z=90
+v)charCode :-It return the character code as per UTF standards.
+vi)altKey :- return true when alt is used.
+vii)ctrlKey:- return true when ctrl is used.
+viii)shiftKey:- return true when shift is used.
+step 1
+-------------
+public users=
+[{UserName:'john'}
+{UserName:'john12'}]
+
+users.UserName.length < 3 we are giving a message.
+
+step 2
+-----------
+for (var item of this.users)
+{
+if(item.UserName==this.userName)
+{
+msg =='user name taken-try another';
+}
+}
+-----------------------
+step 3
+-------------------
+password
+--------------
+varifyPassword(e)
+{
+if(e.keyCode>=65 and e.keyCode<=90)
+this.showCapsWarning=true
+else
+false
+-------------------------------
+Angular attribute directives
+----------------------------------------
+1)NgModel:- dynamic element.it is model who's value is changed dynamically.
+example:- <input type="text" [(ngModel)]="username">
+2)NgClass:-dynamic assignment of css class.we can change the html element dynamically.
+example:-<div[ngClass]=" 'cssClassName' "> Your text </div>
+abc.css
+---------
+.effects{
+border:
+box-shadow:
+background-color:red
+text-align:
+padding:
+}
+----------------------
+def.html
+----------------
+<h1[ngClass]=" ' effects' ">Class Binding is Angular </h1>
+<p>[ngClass]=" ' effects' ">Class Binding is Angular </p>
+* any change made to the .effects class it will reflect to the text.
+---------------
+3)NgStyle:-it is defined inline style for html element.
+it will applied to single line.
+example:- <img [ngStyle]="styleObj" src="asserts/shoe.jpg" width="50" height="50">
+
+public styleObj={
+background-color:
+color:
+text-align:
+}
+--------------------------------------------------------------------------------------------
+Difference between class and ngClass.
+-------------------------------------------------------
+class :
+<div class="form-group">
+<label>User Name</label>
+<div>
+-----------------------------------------------------
+<div [ngClass]="{'errorStyle':isUserInvalid, 'validStyle':isUserValid}" >
+
+isDark:boolean=true;
+isLight:boolean=false;
+
+<div [ngClass]color?'isDark':'isLight'>
+
+example:-
+<div [ngClass]='a ==b'>'class1':'class2'>
+-----------------------------------------------------------------------
+Form Validation
+-----------------------------
+we have some directives to validate a form
+1)NgDirty :- It returns true when the value of the form element is modified.
+2)NgTouched:- It returns true when the element get focus.
+3)NgUntouched:- It returns true when the element never get focus.
+4)NgValid:- it returns true if all input validations are valid.
+5)NgInvalid:- it returns true if any input validations are invalid.
+6)NgErrors:-It is an object that collects all errors of input field.
+*required,Minlength,Maxlength,pattern,email validation.
+
+-------------------------------------------------------------------------------------------------------
+example-13
+----------------------
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-templateform',
+  templateUrl: './templateform.component.html',
+  styleUrls: ['./templateform.component.css']
+})
+export class TemplateformComponent {
+   
+   }
+}
+-----------------------------------------------------------------------------------------
+templateform.component.html
+------------------------------------------------
+<div class="container-fluid">
+  
+  <form #frmRegister="ngForm">
+    <dl>
+        <h2>Register User</h2>
+        <dt>User Name</dt>
+        <dd>
+            <input type="text" name="txtName" ngModel #txtName="ngModel" class="form-control" required>
+            <span *ngIf="frmRegister.submitted && txtName.invalid || txtName.touched && txtName.invalid" class="text-danger">Name Required</span>
+        </dd>
+        <dt>Mobile</dt>
+        <dd>
+            <input type="text" name="txtMobile" ngModel #txtMobile="ngModel" class="form-control" required>
+            <span *ngIf="frmRegister.submitted && txtMobile.invalid || txtMobile.touched && txtMobile.invalid" class="text-danger">Mobile Required</span>
+        </dd>
+        <button class="btn btn-primary btn-block">Register</button>
+    </dl>
+  </form>
+</div>
+---------------------------------
+Note: You can’t use “invalid or valid” properties for a field that comprises of multiple validations. You can use “errors” object to identify the specific error in input field.
+Ex: Errors object to handle multiple errors
+---------------------------------------------------
+templateform.component.html
+-----------------------------------------------
+<div class="container-fluid">
+  
+  <form #frmRegister="ngForm">
+    <dl>
+        <h2>Register User</h2>
+        <dt>User Name</dt>
+        <dd>
+            <input type="text" name="txtName" ngModel #txtName="ngModel" class="form-control" required minlength="4">
+            <div *ngIf="txtName.touched && txtName.invalid" class="text-danger">
+                <span *ngIf="txtName.errors.required" >Name Required</span>
+                <span *ngIf="txtName.errors.minlength">Name too short..</span>
+            </div>
+        </dd>
+        <dt>Mobile</dt>
+        <dd>
+            <input type="text" name="txtMobile" ngModel #txtMobile="ngModel" class="form-control" required pattern="\+91\d{10}">
+            <div *ngIf="txtMobile.touched && txtMobile.invalid" class="text-danger">
+                <span *ngIf="txtMobile.errors.required">Mobile Required</span>
+                <span *ngIf="txtMobile.errors.pattern">Invalid Mobile</span>
+            </div>
+        </dd>
+        <button class="btn btn-primary btn-block">Register</button>
+    </dl>
+  </form>
+</div>
+----------------------------------------------------------------------------------------------------------------------
+example-14
+-------------------------------------------------------------------------------------------------------------------------
+Formvalidation.component.ts
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-formvalidation',
+  templateUrl: './formvalidation.component.html',
+  styleUrls: ['./formvalidation.component.css']
+})
+export class FormvalidationComponent{
+  public displayCityError = false;
+  public displayEvenError = false;
+  
+public VerifyCity(val)
+{
+    if(val=='nocity') {
+      this.displayCityError = true;
+    } else {
+      this.displayCityError = false;
+    }
+  }
+  public VerifyEven(val) {
+     if(val % 2 == 0) {
+       this.displayEvenError = false;
+     } else {
+       this.displayEvenError = true;
+     }
+  }
+}
+--------------------------------------------------------------------------------------------------------------
+Formvalidation.component.html
+----------------------------------------------
+<div class="container-fluid">
+  
+  <form #frmRegister="ngForm">
+    <dl>
+        <h2>Register User</h2>
+        <dt>User Name</dt>
+        <dd>
+            <input type="text" name="txtName" ngModel #txtName="ngModel" class="form-control" required minlength="4">
+            <div *ngIf="txtName.touched && txtName.invalid" class="text-danger">
+                <span *ngIf="txtName.errors.required" >Name Required</span>
+                <span *ngIf="txtName.errors.minlength">Name too short..</span>
+            </div>
+        </dd>
+        <dt>Mobile</dt>
+        <dd>
+            <input type="text" name="txtMobile" ngModel #txtMobile="ngModel" class="form-control" required pattern="\+91\d{10}">
+            <div *ngIf="txtMobile.touched && txtMobile.invalid" class="text-danger">
+                <span *ngIf="txtMobile.errors.required">Mobile Required</span>
+                <span *ngIf="txtMobile.errors.pattern">Invalid Mobile</span>
+            </div>
+        </dd>
+        <dt>Gender</dt>
+        <dd>
+            <input type="radio" name="optGender" value="none" ngModel #optGender="ngModel"> None
+            <input type="radio" name="optGender" value="male" ngModel #optGender="ngModel"> Male
+            <input type="radio" name="optGender" value="female" ngModel #optGender="ngModel"> Female
+        </dd>
+        <dt>Select Your City</dt>
+        <dd>
+            <select (change)="VerifyCity(lstCities.value)" name="lstCities" ngModel #lstCities="ngModel" class="form-control" >
+                <option value="nocity">Select City</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Hyd">Hyd</option>
+            </select>
+            <span *ngIf="displayCityError" class="text-danger">Please Select Your City</span>
+        </dd>
+        <dt>Enter an Even Number</dt>
+        <dd>
+            <input (blur)="VerifyEven(txtEven.value)" type="text" class="form-control" name="txtEven" ngModel #txtEven="ngModel">
+            <span *ngIf="displayEvenError" class="text-danger">Not an Even Number</span>
+        </dd>
+        <button class="btn btn-primary btn-block">Register</button>
+    </dl>
+  </form>
+</div>
+--------------------------------------------------------------------------------------------
+Formvalidation.component.css
+---------------------------------------------------------------------
+dl {
+    width:400px;
+    margin:auto;
+    justify-items: center;
+    align-items: center;
+}
+.validStyle {
+    border:2px solid green;
+    box-shadow: 2px 2px 3px green;
+}
+.invalidStyle {
+    border:2px solid red;
+    box-shadow: 2px 2px 3px red;
+}
+-------------------------------------------------------------------------------------------------
+Lifecycle hook of Angular.
+--------------------------------------------
+ngOnChanges - When the value of a data bound property changes, then this method is called.
+
+ngOnInit - This is called whenever the initialization of the directive/component after Angular first displays the data-bound properties happens.
+
+ngDoCheck - This is for the detection and to act on changes that Angular can't or won't detect on its own.
+
+ngAfterContentInit - This is called in response after Angular projects external content into the component's view.
+
+ngAfterContentChecked - This is called in response after Angular checks the content projected into the component.
+
+ngAfterViewInit - This is called in response after Angular initializes the component's views and child views.
+
+ngAfterViewChecked - This is called in response after Angular checks the component's views and child views.
+
+ngOnDestroy - This is the cleanup phase just before Angular destroys the directive/component.
+      
+example of implementing one lifecycle hook. 
+ app.component.ts 
+-----------------------------------------------------------------
+import {    Component } from '@angular/core';  
+@Component ({ 
+   selector: 'my-app', 
+   template: '<div> {{values}} </div> ' 
+}) 
+export class AppComponent { 
+   values = ' '; 
+   ngOnInit() { 
+      this.values = "Hello"; 
+   } 
+
+}
+
+
+-----------------------------------------
+Angular Service :- creating user-defined business logic which can be reused in the application by injecting into any component.
+--------------------------------------------
+difference between service and funtion
+------------------------------------------------------
+function ment for a single application or with in the folder or project 
+example:- addToCart()
+Service ment for any component for any project or folder not for single application.
+--------------------------------------------------------
+
+step 1) we will create a service in a separte folder.
+step 2)we will inject it to a component and use it.
+
+1)import {Injectable} from '@angular/core'
+2)@Injectable()
+3)providedIn: 'root'
+-----------------calc.service.ts---------------------------------
+example-1
+--------------------
+import { Injectable } from '@angular/core';
+@Injectable({
+  providedIn: 'root'
+})
+export class CalcService {
+
+  constructor() { }
+
+  public add(...params: number[]): number 
+{
+    let result = 0;
+    for (let val of params) 
+{
+        result += val;
+            }
+    return result;
+  }
+}
+------------------------------------------------------------------------------------------
+import {Component} from '@angular/core';
+import { CalcService } from './service/calc.service';
+@Component ({
+    selector :'my-app',
+    template: `Hello`,
+    })
+export class AppComponent
+{
+sum: number = 0;
+  constructor(calc:CalcService)
+{
+    this.sum = calc.add(1,2,3,4);
+    console.log("the sum is "+this.sum);
+}}
+------------------------------------------------------------------------------
+app.module.ts
+--------------------
+add this.
+providers: [CalcService]
+----------------------------------------------------
+we have to exceute the component.ts
+-----------------------------------------------------------------
+
+example-2
+
+import {    Injectable } from '@angular/core';  
+@Injectable()
+export class appService
+ {  
+   getApp(): string 
+{ 
+      return "Hello world";  
+  } } 
+
+------------------------------------------
+import {    Component } from '@angular/core';  
+import {    appService } from './app.service';  
+@Component ({ 
+   selector: 'demo-app', 
+   template: '<div>{{value}}</div>', 
+   providers: [appService] }) 
+export class AppComponent 
+{ 
+   value: string = ""; 
+   constructor(private  xyz: appService) 
+{ }  
+   ngOnInit(): void 
+{ 
+      this.value = this.xyz.getApp();    
+console.log("the string is "+this.value);
+}} 
+
+*
+constructor(private  xyz: appService) :- This is how we have to inject service into any component.
+we inject dependency in a component constructor by specifying a constructor parameter.
+we can define an Access modifier to specify the scope of parameter as "private or public".
+--------------------------------------------------------------
+example 3 :Capcha Program
+-------------------------
+captcha.service.ts
+--------------------------------
+
+----------------------------------------------------------------
+import { Injectable } from '@angular/core';
+
+@Injectable({
+    providedIn: 'root'
+})
+export class CaptchaService
+{
+    public GenerateCode() {
+        let a = Math.random() * 10;
+        let b = Math.random() * 10;
+        let c = Math.random() * 10;
+        let d = Math.random() * 10;
+        let e = Math.random() * 10;
+        let f = Math.random() * 10;
+        let code = `${Math.round(a)} ${Math.round(b)} ${Math.round(c)} ${Math.round(d)} ${Math.round(e)} ${Math.round(f)}`;
+        return code;
+    }
+}
+--------------------------------------------------------------------------------------	
+	Login.component.ts
+-----------------------------------------------------------
+import { Component } from '@angular/core';
+import { CaptchaService } from '../CustomServices/captcha.service';
+
+@Component({
+    selector: 'app-login',
+    templateUrl: 'login.component.html',
+    styleUrls: ['login.component.css']
+})
+
+export class LoginComponent {
+    constructor(private captcha: CaptchaService){}
+    public code = this.captcha.GenerateCode();
+    public refreshClick() {
+        this.code = this.captcha.GenerateCode();
+    }
+}
+----------------------------------------------------------------------------------------
+	Login.component.html
+<div class="container-fluid">
+  <div class="form-group">
+  <label>User Name</label>
+  <div>
+      <input type="text" class="form-control">
+  </div>
+ </div>
+ <div class="form-group">
+  <label>Password</label>
+  <div>
+      <input type="password" class="form-control">
+  </div>
+ </div>
+ <div class="form-group">
+    <label>Verify Code</label>
+    <div>
+        {{code}} <button (click)="refreshClick()" class="btn"><span class="fa fa-sync"></span></button>
+    </div>
+    <div>
+        <input type="text" class="form-control">
+    </div>
+ </div>
+ <div class="form-group">
+    <button class="btn btn-primary btn-block">Login</button>
+ </div>
+</div>
+------------------------------------------------------------------------------------------------
+Example :4
+data.service.ts
+---------------------------
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class DataService {
+   public GetProducts(){
+       return [
+        {Name: 'JBL Speaker', Price: 45000.43, Photo: 'assets/jblspeaker.jpg', Category: 'Electronics'},
+        {Name: 'Earpods', Price: 15000.43, Photo: 'assets/earpods.jpg', Category: 'Electronics'},
+        {Name: 'Nike Casuals', Price: 5000.43, Photo: 'assets/shoe.jpg', Category: 'Footwear'},
+        {Name: 'Lee Cooper Boot', Price: 4000.43, Photo: 'assets/shoe1.jpg', Category: 'Footwear'},
+        {Name: 'Shirt', Price: 3000.43, Photo: 'assets/shirt.jpg', Category: 'Fashion'},
+        {Name: 'Jeans', Price: 5000.43, Photo: 'assets/jeans.jpg', Category: 'Fashion'},
+      ];
+   }
+}
+-----------------------------------------------------------------------------	
+Products.component.ts
+
+import { Component, OnInit, OnChanges } from '@angular/core';
+import { DataService } from '../CustomServices/data.service';
+
+@Component({
+    selector: 'app-data',
+    templateUrl: 'data.component.html',
+
+})
+
+export class AppComponent {
+  constructor(private data: Service1Component){}
+  public products = [];
+   ngOnInit() {
+    this.products = this.data.GetProducts();
+    console.log(this.products);
+  }
+}
+
+-------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

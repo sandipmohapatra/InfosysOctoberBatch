@@ -1,0 +1,2390 @@
+ Angular17
+---------------------
+1)For Angular the scripting language will be typescript. Browser cannot understand typescript (.ts).So after compilation of type script it is converted into .js  and the browser can understand and display the output.
+
+2)Angular is faster because of virtual DOM.
+<p>The score =203</p>
+So when the page is refreshed only the modified part will be loaded not the whole page. 
+example :- cricbuzz.com. In this only the score part is updated not the whole page.
+
+3)It is mostly used for development of single page application.(SPA)
+
+4)Dependency injection:- loading of dependency at the runtime.
+
+5)It support one way and two way bindings.
+
+6)Testing  of our application can be done using jasmine and karma.
+
+7)Angular is an open source, cross platform, front-end.
+
+8)It provides end to end solution for building application, debugging, testing and deploying.
+
+9)Typescript support Object oriented Programming language.
+
+10)Angular framework support MVC,MVVM
+
+11)The speed is high as compared to older technology.
+
+12)It uses AOT compiler.[ahead-of-time].It convert the typescript into JavaScript.
+It provides faster rendering.
+
+-------------------------------------------------------------------------------------------------
+Types of Binding
+----------------------------
+1)one way binding:-
+i)interpolation:-{{6+7}},{{name}}
+we use double curly braces and is known as interpolation.
+or template expression.
+
+2)property binding :-
+<img[src]="shoe.jpg">
+It is used with square brackets to the DOM properties.
+
+3)event binding
+<button(click)="onClick()">Save</button>
+------------------------------------------------------------------------------------
+2)two way binding:-
+<input type=text name=t1 size=20 value="sandip">
+<input type=text name=t1 size=20 [(ngModel)]="name">
+in this user can store and update the entry. To make change in the user entry we use two-way binding. 
+---------------------------------------------------------------------------------------------
+software installation
+------------------------------------
+1)nodejs download
+2)npm install -g typescipt
+3)to compile:-
+tsc example1.ts
+4)to run:-
+node example1.js
+-------------------------------------------------------------------------
+Angular17
+-----------------------
+step -1)npm install -g @angular/cli
+
+step -2)ng new priyanka
+
+step-3)ng serve
+to compile
+step-4)localhost:4200
+-----------------------------------------------
+Example 1
+--------------------
+app.component.html
+------------------------------
+<h1>Employee Registration Page</h1><hr color="red">
+<table>
+<tr><td>Enter your name</td><td><input type=text name=t1 size=20></td></tr>
+<tr><td>Enter your Address</td><td><input type=text name=t2 size=20></td></tr>
+<tr><td>Enter your name</td><td><input type=text name=t3 size=20></td></tr>
+<tr><td>Enter your name</td><td><input type=text name=t4 size=20></td></tr>
+<tr><td>Enter your name</td><td><input type=text name=t5 size=20></td></tr>
+<tr><td></td><td><input type=submit value="Submit"></td></tr>
+</table>
+---------------------------------------------------------
+app.component.css
+--------------------------------
+h1{
+  color:red;
+}
+-----------------------------------------------
+example-2
+------------------
+<h1>Employee Registration Page</h1><hr color="red">
+<p>The sum of 2 numbers are</p><p>{{7+8}}</p>
+<p>The mul of 2 numbers are</p><p>{{7*8}}</p>
+<p>The sub of 2 numbers are</p><p>{{7-8}}</p>
+<p>The div of 2 numbers are</p><p>{{16 / 8}}</p>
+<table>
+<tr><td>Enter your name</td><td><input type=text name=t1 size=20></td></tr>
+<tr><td>Enter your Address</td><td><input type=text name=t2 size=20></td></tr>
+<tr><td>Enter your name</td><td><input type=text name=t3 size=20></td></tr>
+<tr><td>Enter your name</td><td><input type=text name=t4 size=20></td></tr>
+<tr><td>Enter your name</td><td><input type=text name=t5 size=20></td></tr>
+<tr><td></td><td><input type=submit value="Submit"></td></tr>
+
+</table>
+-------------------------------------------------------------------------------
+example-3
+-------------------
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent
+{
+  name:string = `Pawan`;
+  nameList:string[]=["Priya","Darshan","Mohan","Anil","Sunil"];
+  title = 'mphasis2023';
+}
+---------------------------------------------------------------------------------
+<h1>Employee List</h1><hr color="red">
+<p>My name is {{name}}</p>
+<p>My Friends are {{nameList[0]}}</p>
+<p>My Friends are {{nameList[1]}}</p>
+<p>My Friends are {{nameList[2]}}</p>
+<p>My Friends are {{nameList[3]}}</p>
+<p>My Friends are {{nameList[4]}}</p>
+
+----------------------------------------------------------------------------------------------
+example-4
+---------------------
+step 1:- to create a new module (login,register,service,contact,feedback)
+goto app module.(cd app)
+ng g c login
+ng g c register
+ng g c service
+
+step 2:-copy and paste the selector in index.html
+
+step 3:- goto app.module.ts 
+bootstrap: [LoginComponent]
+
+step 4:- modify or create login.component.html 
+
+step-5:-ng serve
+---------------------------------------------------------------------------------------------------------------
+how to create registration page
+-------------------------------------------
+step 1:- ng g c registration
+
+step 2:-bootstrap: [RegisterComponent]   <---app.module.ts
+
+step3:-index.html paste the selector
+
+step4:- type html code in register.component.html
+
+step 5:- ng server
+--------------------------------------------------------------------------------
+example-5
+----------------------
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-contact',
+  template: `
+  <p>Hello my name is {{name}}</p>
+  <p>Hello my email is {{email}}</p>
+  <p>Hello my address is {{address.street}} {{address.loc}} {{address.state}} {{address.city}}</p>
+<p><Button (click) ="sayName()">Say your Details</Button>
+<p><Button (click) ="Details()">Details...</Button>
+<h3>My Hobbies are </h3>{{hobbies}}
+<h3>My Daily Foods are</h3>
+<ul>
+<li *ngFor="let food of foods">
+{{food}}
+</li>
+</ul>
+  `,
+
+})
+export class ContactComponent
+{
+name:string;
+email:string;
+address:any;
+hobbies:string[];
+foods:string[];
+constructor()
+{
+  this.name='sandip kumar';
+  this.email='sandip@gmail.com';
+  this.address=
+  {
+    street:'M G Road',
+    loc:'Savaji Nagar',
+    state:'Karnataka',
+    city:'Bangalore'
+  }
+  this.hobbies=['music','cricket','movies','football'];
+  this.foods=['Rice and Dal','Biryani','noodles','sweets'];
+}
+sayName()
+{
+  console.log("my name is "+this.name);
+  console.log("my email is "+this.email);
+  console.log("my address is "+this.address.street +" "+this.address.loc+"  "+this.address.city);
+  }
+  Details()
+  {
+    this.sayName();
+  }
+  }
+interface address
+{
+street:string;
+loc:string;
+state:string;
+city:string;
+}
+-----------------------------------------------------------------------------------------
+
+
+wap to display your details
+1)name
+2)collage name
+3)subjects studied
+4)qualification
+assign data using constructor.
+----------------------------------------------------------------------------------------------------
+Routing in Angular
+------------------------------
+1)Routing means navigating to different modules.
+2)Routing can load new contents into page without reloading  the complete page.
+3)SPA single page application and progressive web application requires routing.
+4)user can stay at one page and can get access to every page.
+5)Library file used is @Angular/router and @Angular/core
+6)RouterModule :-contains all the modules has to be routed. It imports routes .
+7)Routes:-Routes Object is used to configure routes to the application.
+------------------------------------------------------------------------------------
+import {Routes,RouterModule} from '@angular/router';
+------------------------- 
+
+step 1:-create a new file router.component.ts
+
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'darshan',
+  template :`
+ MENU<ul>
+ <li><a [routerLink]="['/login']">Login Page</a></li>
+ <li><a [routerLink]="['/register']">Register Page</a></li>
+ <li><a [routerLink]="['/contact']">Contact Page</a></li>
+</ul><hr>
+<router-outlet></router-outlet> `
+})
+export class RouterAppComponent
+{
+
+}
+-----------------------------------------------------------------------------------------------
+step 2:- modiyfy the app.module.ts
+
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { ContactComponent } from './contact/contact.component';
+import { RouterAppComponent } from './router.component'; <---------------------------
+import {Routes,RouterModule} from '@angular/router';   <-------------------------------------
+
+const appRoutes: Routes =                  <-------------------------------------------
+[
+  {path:'login',component:LoginComponent},
+  {path:'register',component:RegisterComponent},
+  {path:'contact',component:ContactComponent},
+];
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    RegisterComponent,
+    ContactComponent,
+    RouterAppComponent  <-----------------------------------------
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    RouterModule.forRoot(appRoutes)  <---------------------------------
+  ],
+  providers: [],
+  bootstrap: [RouterAppComponent]    <------------------------------
+})
+export class AppModule { }
+------------------------------------------------------------------------------
+Example-7
+----------------
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'darshan',
+  templateUrl: './router.component.html'
+})
+export class RouterAppComponent
+{}
+--------------------------------------------------------------------------------------
+router.component.html
+----------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<header>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <body id="myPage">
+<div class="w3-top">
+ <div class="w3-bar w3-theme-d2 w3-left-align">
+  <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-hover-white w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
+  <a class="w3-bar-item w3-button w3-coral"><i class="fa fa-home w3-margin-right"></i>Mphasis Batch-2023</a>
+  <a routerLink="home" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Home</a>
+  <div class="w3-dropdown-hover w3-hide-small">
+    <button class="w3-button" title="Notifications">Registration <i class="fa fa-caret-down"></i></button>
+    <div class="w3-dropdown-content w3-card-4 w3-bar-block">
+      <a routerLink="/register" class="w3-bar-item w3-button">EmployeeRegistration</a>
+      <a routerLink="/register"class="w3-bar-item w3-button">CustomerRegistration</a>
+    </div>
+    </div>
+  <a [routerLink]="['/contact']" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Contact</a>
+  <a [routerLink]="['/login']" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Login</a>
+  <a [routerLink]="['/register']" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Register</a>
+
+</div>
+<router-outlet></router-outlet>
+</div>
+    </body>
+    </header>
+--------------------------------------------------------------
+register
+login
+contact
+service
+feedback
+
+pages with bootsrap
+-----------------------------------------------------------------------------
+style.css
+-------------------
+.background-image {
+  background-image: url('./assets/abcd.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+height:1100;
+}
+--------------------------
+book.component.html
+--------------------------------------------
+<body class="background-image">
+-----------------------To Create a Project----------------------------
+step 1:-
+-----------------go into the app folder---------------------------------------------------
+create the modules
+1)ng g c flight
+2)ng g c register
+3)ng g c bookticket
+4)ng g c contact
+5)ng g c feedback
+6)ng g c searchflight
+---------------------------------------------------------
+step 2:-
+modify the html files.
+register.component.html ,book ,contact ,feedback ,search
+--------------------
+<body class="background-image">
+<h1>Flight Booking Page</h1><hr color="red">
+<table>
+  <tr><td>Enter your name</td><td><input type=text name=t1 size=20></td></tr>
+  <tr><td>Enter your Address</td><td><input type=text name=t2 size=20></td></tr>
+  <tr><td>Enter your Phoneno</td><td><input type=text name=t3 size=20></td></tr>
+  <tr><td>Enter your Date of Travel</td><td><input type=text name=t4 size=20></td></tr>
+  <tr><td>Enter your Time of Travel</td><td><input type=text name=t5 size=20></td></tr>
+  <tr><td></td><td><input type=submit value="Submit"></td></tr>
+  </table>
+
+    <div id=leftdiv>
+        <h3>This is AirLine Reservation System</h3>
+    </div>
+    <div id=middiv>
+        <h3>This is AirLine Reservation System</h3>
+    </div>
+    <div id=rightdiv>
+        <h3>This is AirLine Reservation System</h3>
+        </div>
+</body>
+---------------------------------------------------------------------------------
+step 3:-
+---------------
+open flight.component.html
+-------------------
+flight.component.ts
+---------------------------------
+copy the selector and paste in the index.html
+----------------------------------------------------------------
+step 4:-
+flight.component.html
+---------------------------------
+paste the bootstrap menu bar.
+---------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Airline Reservation</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<header>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <body id="myPage">
+<div class="w3-top">
+ <div class="w3-bar w3-theme-d2 w3-left-align">
+  <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-hover-white w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
+  <a class="w3-bar-item w3-button w3-coral"><i class="fa fa-home w3-margin-right"></i>Mphasis Batch-2023</a>
+  <a routerLink="home" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Home</a>
+  <div class="w3-dropdown-hover w3-hide-small">
+    <button class="w3-button" title="Notifications">Registration <i class="fa fa-caret-down"></i></button>
+    <div class="w3-dropdown-content w3-card-4 w3-bar-block">
+      <a routerLink="/register" class="w3-bar-item w3-button">CustomerRegistration</a>
+      <a routerLink="/book"class="w3-bar-item w3-button">CustomerTicketBooking</a>
+    </div>
+    </div>
+  <a [routerLink]="['/contact']" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Contact</a>
+  <a [routerLink]="['/search']" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Search Flight</a>
+  <a [routerLink]="['/feedback']" class="w3-bar-item w3-button w3-hide-small w3-hover-white">FeedBack</a>
+
+</div>
+<router-outlet></router-outlet>  <- it gives space to render the pages
+</div>
+    </body>
+    </header>
+
+--------------------------------------------------------------
+step 5:-
+-------------
+app.module.ts 
+-------------------------
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import {Routes,RouterModule} from '@angular/router';   <------------------------------------paste
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { AirlinesComponent } from './airlines/airlines.component';
+import { FeedbackComponent } from './feedback/feedback.component';
+import { ContactComponent } from './contact/contact.component';
+import { SearchComponent } from './search/search.component';
+import { BookComponent } from './book/book.component';
+import { RegisterComponent } from './register/register.component';
+
+
+
+const appRoutes: Routes =    <------------------------------------------paste
+[
+  {path:'book',component:BookComponent},
+  {path:'register',component:RegisterComponent},
+  {path:'search',component:SearchComponent},
+  {path:'feedback',component:FeedbackComponent},
+  {path:'contact',component:ContactComponent},
+  ];
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    AirlinesComponent,
+    FeedbackComponent,
+    ContactComponent,
+    SearchComponent,
+    BookComponent,
+    RegisterComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    RouterModule.forRoot(appRoutes) <--------------------------paste
+  ],
+  providers: [],
+  bootstrap: [AirlinesComponent]  <----------------------------------paste
+})
+export class AppModule { }
+-------------------------------
+assert paste the images
+------------------------------------------
+style.css
+-------------------- 
+/* You can add global styles to this file, and also import other style files */
+
+.background-image {
+  background-image: url('./assets/img1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 1120px;
+  }
+
+-----------------------------------------------------------------------------
+flow of the program
+step1:- ng g c login,register,contact
+
+step 2:-
+index.html <app-login></app-login>---------app.module.ts (details of all the files used in the application)
+bootstrap[],giving path,declarations(all the components),imports, 
+
+*
+according to the bootstap the program will execute.
+---------------------------------------------------------------------------------------
+example-1(one way binding)
+--------------------------------------------
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-onewayexample1',
+  templateUrl: './onewayexample1.component.html',
+  styleUrls: ['./onewayexample1.component.css']
+})
+export class Onewayexample1Component
+{
+public student=
+{
+  Name:'Priyanka',
+  address:'Bangalore',
+  phone:9988776655,
+}
+}
+-----------------------------------------------------------------------
+<dl>
+  <dt>Name</dt>
+  <dd>{{student.Name}}</dd>
+  <dt>Address</dt>
+  <dd>{{student.address}}</dd>
+  <dt>Phone no</dt>
+  <dd>{{student.phone}}</dd>
+</dl>
+---------------------------------------------------------------------------------
+Example-2
+----------------------------------------------------------------------------------
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-onewayexample2',
+  templateUrl: './onewayexample2.component.html',
+  styleUrls: ['./onewayexample2.component.css']
+})
+export class Onewayexample2Component
+{
+public name='Samsung TV';
+public city='Bangalore';
+public inStock=true;
+
+public product={
+  name:'',
+  city:'',
+  inStock:false
+}
+
+public Click()
+{
+  this.product=
+  {
+    name:this.name,
+    city:this.city,
+    inStock:this.inStock
+  }
+}
+}
+------------------------------------Two way binding-----------------------------------------
+Example-2
+--------------------------------------------------------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+<h2 class="text-center text-primary">This is an example of two way binding</h2>
+<div class="row">
+  <div class="col-3">
+    <div class="form-group">
+      <label>Name</label>
+      <input [(ngModel)]="name" type="text" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Shipped To</label>
+      <select [(ngModel)]="city" class="form-control">
+        <option>Bangalore</option>
+        <option>Hydrabad</option>
+        <option>Pune</option>
+        </select>
+    </div>
+    <div class="form-group">
+      <label>Is Stock Available</label>
+      <input [(ngModel)]="inStock" type="checkbox"> Yes
+    </div>
+    <div class="form-group">
+      <button (click)=Click() class="btn btn-primary btn-block">Update</button>
+    </div>
+    <div class="col-9">
+<table class="table table-hover">
+<colgroup span="1" style="background-color: yellow;"></colgroup>
+<tr><td>Name :</td><td [innerHTML]="product.name"></td></tr>
+<tr><td>Shipped to :</td><td>{{product.city}}</td></tr>
+<tr><td>Stock Present :</td><td>{{(product.inStock==true)?"Product Available":"Product not Available"}}</td></tr>
+</table></div></div></div></div></body>
+--------------------------------------------------------------------------------------------------------
+import { FormsModule } from '@angular/forms';
+import------FormsModule
+--------------------------------------------------------------------------------------------------------
+example-3
+--------------------
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-onewayexample2',
+  templateUrl: './onewayexample2.component.html',
+  styleUrls: ['./onewayexample2.component.css']
+})
+export class Onewayexample2Component
+{
+public name='LG TV';
+public city='Bangalore';
+public price=45000.50;
+public inStock=false;
+
+public product={
+  name:'',
+  city:'',
+  price:0.0,
+  inStock:false
+}
+public Click()
+{
+  this.product=
+  {
+    name:this.name,
+    city:this.city,
+    price:this.price,
+    inStock:this.inStock
+  }
+}
+}
+-----------------------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+<h2 class="text-center text-primary">This is an example of two way binding</h2>
+<div class="row">
+  <div class="col-6">
+    <div class="form-group">
+      <label>Name</label>
+      <input [(ngModel)]="name" type="text" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Shipped To</label>
+      <select [(ngModel)]="city" class="form-control">
+        <option>Bangalore</option>
+        <option>Hydrabad</option>
+        <option>Pune</option>
+        </select>
+    </div>
+    <div class="form-group">
+      <label>Is Stock Available</label>
+      <input [(ngModel)]="inStock" type="checkbox"> Yes
+    </div>
+
+    <div class="form-group">
+      <label>Price :</label>
+      <input [(ngModel)]="price" type="text" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <button (click)=Click() class="btn btn-primary btn-block">Update</button>
+    </div>
+    <div class="col-12">
+<table class="table table-hover">
+<colgroup span="1" style="background-color: yellow;"></colgroup>
+<tr><td>Name :</td><td [innerHTML]="product.name"></td></tr>
+<tr><td>Shipped to :</td><td>{{product.city}}</td></tr>
+<tr><td>Shipped to :</td><td>{{product.price}}</td></tr>
+<tr><td>Stock Present :</td><td>{{(product.inStock==true)?"product Available":"product not Available"}}</td></tr>
+</table>
+
+    </div>
+  </div>
+</div>
+</div>
+</body>
+------------------------------------------------------------------------------------------------
+example-4
+---------------
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-ifdemo',
+  templateUrl: './ifdemo.component.html',
+  styleUrls: ['./ifdemo.component.css']
+})
+export class IfdemoComponent
+{
+public product={
+  Name:'Nike Shoes',
+  Price:4500.50,
+  Photo:'./assets/shoe.jpg'
+};
+public showImage=false;
+public btnText='Show';
+
+public TogglePreview()
+{
+this.showImage=(this.showImage==false)?true:false;
+this.btnText=(this.btnText=='Show')?'Hide':'Show';
+}
+}
+-------------------------------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+<h2 class="text-center text-primary">This is an example of ng-if Directive</h2>
+<div class="row">
+  <div class="col-6">
+    <dl>
+      <dt><label>Name</label></dt>
+      <dd>{{product.Name}}</dd>
+      <dt><label>Price</label></dt>
+      <dd>{{product.Price}}</dd>
+    </dl>
+<button (click)="TogglePreview()" class="btn btn-primary">{{btnText}} Image </button>
+</div>
+<div class="col-9">
+<div *ngIf="showImage">
+<img [src]="product.Photo" height="300" width="300">
+<img src="./assets/shoe.jpg" height="300" width="300">
+</div>
+</div>
+</div>
+</div>
+------------------------------------------------------------------------------------------------------
+example-6
+-------------------
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-for-demo',
+  templateUrl: './for-demo.component.html',
+  styleUrls: ['./for-demo.component.css']
+})
+export class ForDemoComponent
+{
+public products=['samsung tv','samsung freedge','samsung Laptop']
+}
+-------------------------------------------------
+<div>
+<h3>Product List</h3>
+<ol>
+<li *ngFor="let product of products">{{product}}</li>
+</ol>
+</div>
+------------------------------------------------------------------------------------------
+example-7
+--------------------
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-for-demo',
+  templateUrl: './for-demo.component.html',
+  styleUrls: ['./for-demo.component.css']
+})
+export class ForDemoComponent
+{
+public data=
+[ {category : 'Electronic',
+products:['samsung tv','samsung freedge','samsung Laptop']},
+{category : 'shoes',
+products:['Nike ','Bata','Puma']},
+{category : 'Clothes',
+products:['T-shirt','Jeans','Shirt']},
+];
+}
+----------------------------------------------------------------------
+<div>
+<h3>Product List</h3>
+<ol>
+<li *ngFor="let item of data">{{item.category}}
+<ol type="a">
+  <li *ngFor="let product of item.products">{{product}}
+  </li>
+  </ol>
+</li>
+  </ol>
+</div>
+----------------------------------------------------------------------------------
+example-7
+------------------
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-likedemo',
+  templateUrl: './likedemo.component.html',
+  styleUrls: ['./likedemo.component.css']
+})
+export class LikedemoComponent
+{
+public shoes =
+[
+  {Name:"Nike",Photo:"assets/shoe.jpg",Likes:0 ,dislikes:0},
+  {Name:"Puma",Photo:"assets/shoe1.webp",Likes:0 ,dislikes:0}
+  ];
+  public likes (shoes:any)
+  {
+    shoes.Likes++;
+  }
+  public dislikes (shoes:any)
+  {
+    shoes.dislikes++;
+  }
+}
+--------------------------------------------------------------------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+  <div class="card-deck">
+<div class="card" *ngFor="let shoe of shoes">
+  <div class="card-header text-center">
+    <h3>{{shoe.Name}}</h3>
+  </div>
+  <div class="card-body text-center">
+    <img [src]="shoe.Photo" width="300" height="300" class="img-thumbnail">
+  </div>
+  <div class="card-footer text-center">
+    <button (click)="likes(shoe)" class="btn btn-success">[{{shoe.Likes}}] Like</button>
+    <button (click)="dislikes(shoe)" class="btn btn-danger">[{{shoe.dislikes}}] DisLike</button>
+     </div>
+</div>
+  </div>
+</div>
+-----------------------------------------------------------------------------------------------------
+Example-8
+------------------
+example1.ts
+------------------------------
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-example1',
+  templateUrl: './example1.component.html',
+  styleUrls: ['./example1.component.css']
+})
+export class Example1Component
+{
+public product=[
+{Name:'Samsung TV',Price:45000.00},
+{Name:'Sony TV',Price:75000.00},
+{Name:'LG TV',Price:35000.00},
+];
+public txtName:any; <---global variable (scope through out the program).
+public txtPrice:any;
+
+public NewProduct=
+{
+  Name:"",  <--local variable which are inside the function (scope is within the function)
+  Price:0
+}
+
+public AddProduct()
+{
+  alert('Product Added');
+  this.NewProduct={
+    Name:this.txtName,  <--- assigning the gobal variable to local variable.
+    Price:this.txtPrice
+  };
+  this.product.push(this.NewProduct)
+  this.txtName='',
+  this.txtPrice=0
+}
+
+public DeleteProduct(index:number)
+{
+var status=confirm("Are you sure you want to delete");
+if(status==true)
+{
+this.product.splice(index,1);
+}
+}
+}
+---------------------------------------------------------------------------
+example1.html
+--------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+  <div class="AddProduct">
+    <h2>Add New Product</h2>
+    <div class="form-group">
+      <label>Name</label>
+      <div>
+<input [(ngModel)]="txtName" type="text" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>Price</label>
+        <div>
+  <input [(ngModel)]="txtPrice" type="text" class="form-control">
+        </div>
+    </div>
+  </div>
+  <button (click)="AddProduct()" class="btn btn-success">Add Product</button>
+  </div>
+
+<div>
+<h2>Product List</h2>
+<table>
+<tr><th>Name</th><th>Price </th><th>Action</th></tr>
+<tr *ngFor="let product of product; let i=index"><td>{{product.Name}}</td><td>{{product.Price}}</td>
+<td><button class="btn btn-danger" (click)="DeleteProduct(i)">Delete Product</button></td>
+</tr>
+</table>
+</div>
+</div>
+-------------------------------------------------------------------------------------------
+example1.css
+-------------------------------
+.AddProduct
+{
+  width:300px;
+  border:2px solid darkblue;
+  padding:10px;
+  margin: 20px;
+}
+
+mytable,tr,td,th
+{
+  width:900px;
+  border:2px solid darkblue;
+  padding:10px;
+  margin: 20px;
+}
+---------------------------------------------------------------------------------------
+Angular Pipe
+---------------------------
+1)Pipe is used to transform data.
+2)Data may come to angular from various source so the data type of source provider and datatype of the typescript will not match.so it will not display in proper format .so pipe will transform the data and display in desired format.
+3)pipes are used for formatting and filtering the data.
+4)All pipes are derived from 'PipeTransform' .
+5)import {PipeTransform} from '@angular/core'
+6)we have some pre-defined pipes and we can also create custom pipes.
+7)Every pipe is defined with a pipe name, which is configured using "@Pipe()".
+@Pipe({name:"uppercase"})
+8)Every pipe implements  "PipeTransform" and use the transform() method.
+export class Uppercase implements PipeTransform
+{
+transform(value)
+{ return value;}}
+-----------------------------------------------------------------
+example :1
+----------------------
+app.component.ts file.
+-------------------------------------------
+import { Component } from '@angular/core';
+@Component ({ 
+   selector: 'my-app', 
+   templateUrl: 'app/app.component.html' 
+}) 
+export class AppComponent { 
+   TutorialName: string = 'Angular JS'; 
+   appList: string[] = ["Binding", "Display", "Services"]; 
+} 
+-----------------------------------------------------------------------
+app.component.html file.
+-------------------------------------------------------------------------
+<div> 
+   The name of this Tutorial is {{TutorialName}}<br>  
+   The first Topic is {{appList[0] | uppercase }}<br> 
+   The second Topic is {{appList[1] | uppercase }}<br> 
+   The third Topic is {{appList[2]| uppercase }}<br> 
+</div>
+
+----------------------------------------------------------------------------------------
+Example :-
+Pre-defined Pipes
+-----------------------------------
+import { Component } from '@angular/core';
+@Component({
+  selector: 'app-pipeexample1',
+  templateUrl: './pipeexample1.component.html',
+  styleUrls: ['./pipeexample1.component.css']
+})
+export class Pipeexample1Component  
+{
+  TutorialName: string = 'Angular JS'; 
+  appList: string[] = ["Binding data", "Display device", "Services oriented"]; 
+public product = {
+  Name:'Samsung TV',
+  Price:45000.50,
+  Mfd:new Date('2021-02-02')
+}}
+---------------------------------------------------------------------------------------------
+<div> 
+    The name of this Tutorial is {{TutorialName}}<br>  
+    The first Topic is {{appList[0] | titlecase }}<br> 
+    The second Topic is {{appList[1] | titlecase }}<br> 
+    The third Topic is {{appList[2]| titlecase }}<br> 
+    The product name is {{product.Name | titlecase}}<br>
+    The product price is {{product.Price}}<br>
+    The product price is {{product.Price|number}}<br>
+    The product price is {{product.Price|currency}}<br>
+    The product price is {{product.Price|currency:'INR'}}<br>
+    The product price is {{product.Price|currency:'&#8377;'}}<br>
+    The product date is {{product.Mfd|date:'MMM-dd-yyyy'}}<br>
+    The product date is {{product.Mfd|date:'shortDate'}}<br>
+    The product Date is {{product|json}}<br/>    
+    The Canadian dollar {{1234567 | currency:'CAD':'symbol' :'1.2-5'}}<br>
+    The first Topic is {{appList[0] | slice:1:2}}<br> 
+    The second Topic is {{appList[1] | slice:1:3}}<br> 
+   The third Topic is {{appList[2]| slice:2:3}}<br> 
+    
+ </div>
+
+-----------------------------------------------------------------------------------------
+Angular  also has the facility to create custom pipes. The general way to define a custom pipe is as follows.
+syntax:-
+----------------
+import { Pipe, PipeTransform } from '@angular/core';  
+@Pipe({name: 'Pipename'}) 
+
+export class Pipeclass implements PipeTransform 
+{ 
+   transform(parameters): returntype 
+{ } 
+} 
+--------------------------------------------------------------------------------------
+Where,
+
+'Pipename' - This is the name of the pipe.
+
+Pipeclass - This is name of the class assigned to the custom pipe.
+
+Transform - This is the function to work with the pipe.
+
+Parameters - This are the parameters which are passed to the pipe.
+
+Returntype - This is the return type of the pipe.
+----------------------------------------------------------------------------------
+step-1)create folder multiplier
+step-2)
+--------------------------------------------------------------
+multiplier.component.ts
+---------------------------------------------------------------------
+import {Component} from '@angular/core';
+@Component ({
+  selector: 'app-multiplier',
+  template:`
+  <p>Multiplier {{5 | Multiplier: 20}}</p> <br />
+  
+  <p>Multiplier {{2 | Multiplier: 20}}</p> <br />
+  
+  <p>Multiplier {{4 | Multiplier: 20}}</p> <br />
+   `
+})
+export class MultiplierComponent
+{}
+-----------------------------------------------------------------------------------
+step 3) create a file inside multiplier folder
+-----------------------------------------------------------
+multiplier.pipe.ts (new pipe is defined) //this custom pipe have to be separate
+--------------------------------------------------------------
+import {Pipe,PipeTransform} from '@angular/core';
+
+@Pipe({name: 'Multiplier'})
+
+export class Multiplierpipe implements PipeTransform
+{
+    transform(value:number, multiply: number):number
+    {
+        return multiply * value
+    }
+}
+
+--------------------------------------------------------------------------------------
+app.module.ts
+----------------------------------------------------------------------------------------
+import { NgModule }      from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+
+import { AppComponent }  from './app.component';
+import {FormsModule} from  '@angular/forms';
+import { Multiplierpipe } from './multiplier/multiplier.pipe';
+
+@NgModule({
+  imports:      [ BrowserModule],
+  declarations: [ AppComponent ,Multiplierpipe],
+  bootstrap:    [ MultiplierComponent ]
+})
+export class AppModule { }
+
+----------------------------------------------------------------------------------------------
+
+import {Pipe,PipeTransform} from '@angular/core';
+@Pipe({name: 'sentencecase'})
+
+export class SentenceCase implements PipeTransform
+{
+    transform(str)
+    {
+        let firstChar=str.charAt(0);
+        let restChars=str.substring(1);
+        let sentence=firstChar.toUpperCase()+restChars.toLowerCase();
+        return sentence;
+    }
+}
+-------------------------------------------------------------------------------------
+import { Component } from '@angular/core';
+@Component({
+  selector: 'app-multiplier',
+ templateUrl:'multiplier.component.html'
+   
+ })
+export class MultiplierComponent 
+ {
+public msg='welcome to Angular 10';
+   }
+-----------------------------------------------------------------------
+example-shopping cart
+-------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+  <h2 class="text-center text-primary"><span class="fa fa-shopping-cart"></span>Amazon - Shopping</h2>
+  <div class="row">
+    <div class="col-3">
+        <div class="form-group">
+            <label>Select a Category</label>
+            <div>
+                <select (change)="OnCategoryChange()" [(ngModel)]="selectedCategoryName" class="form-control">
+                    <option *ngFor="let item of categories">
+                        {{item}}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Select a Product</label>
+            <div>
+                <select (change)="onProductChanged()" [(ngModel)]="selectedProductName" class="form-control">
+                    <option *ngFor="let item of products">
+                        {{item}}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Preview</label>
+            <div class="card">
+                <div class="card-header">
+                    <h3>{{searchedProduct.Name}}</h3>
+                </div>
+                <div class="card-body text-center">
+                    <img [src]="searchedProduct.Photo" width="200" height="200">
+                </div>
+                <div class="card-footer text-center">
+                    <h3>{{searchedProduct.Price | currency:'INR'}}</h3>
+                    <button (click)="AddToCartClick()" class="btn btn-danger btn-block"> <span class="fa fa-shopping-cart"></span>Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div>
+            <table *ngIf="showCart" style="margin-top: 100px;" class="table table-hover">
+                <caption>Your Cart Items</caption>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Preview</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of cartItems; let i=index">
+                        <td>{{item.Name}}</td>
+                        <td>{{item.Price}}</td>
+                        <td><img width="50" height="50" [src]="item.Photo"></td>
+                        <td>
+                            <button (click)="DeleteCartItem(i)" class="btn btn-outline-danger"> <span class="fa fa-trash"></span>Delete </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-3">
+        <div>
+            <button (click)="ToggleCartDisplay()" class="btn btn-danger btn-block"><span class="fa fa-shopping-cart"></span> [{{cartItemsCount}}] Your Cart Items</button>
+        </div>
+
+    </div>
+  </div>
+</div>
+</body>
+</html>
+--------------------------------------------------------------------------------------------------------------
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-amazon',
+  templateUrl: './amazon.component.html',
+  styleUrls: ['./amazon.component.css']
+})
+export class AmazonComponent
+ {
+  public categories = ['Select a Category', 'Electronics', 'Footwear', 'Fashion'];
+  public electronics = ['Select Electronics', 'JBL Speaker', 'Earpods'];
+  public footwear = ['Select Footwear', 'Nike Casuals', 'Lee Cooper Boot'];
+  public fashion = ['Select Fashion', 'Shirt', 'Jeans'];
+  public data = [
+   {Name: 'JBL Speaker', Price: 4500.55, Photo: 'assets/jblspeaker.jpg'},
+   {Name: 'Earpods', Price: 3000.44, Photo: 'assets/earpods.jpg'},
+   {Name: 'Nike Casuals', Price: 6000.44, Photo: 'assets/shoe.jpg'},
+   {Name: 'Lee Cooper Boot', Price: 2000.44, Photo: 'assets/shoe1.jpg'},
+   {Name: 'Shirt', Price: 1000.44, Photo: 'assets/shirt.jpg'},
+   {Name: 'Jeans', Price: 4000.44, Photo: 'assets/jeans.jpg'},
+  ];
+  public products:any = [];
+  public selectedCategoryName:any = 'Select a Category';
+  public selectedProductName:any;
+  public searchResults:any = [];
+  public searchedProduct =
+  {
+    Name: '',
+    Price: 0,
+    Photo: ''
+  };
+  public cartItems:any = [];
+  public cartItemsCount = 0;
+  public showCart = false;
+  public GetCartItemsCount()
+  {
+    this.cartItemsCount = this.cartItems.length;
+  }
+  
+public OnCategoryChange()
+{
+    switch(this.selectedCategoryName)
+    {
+      case 'Electronics':
+        this.products = this.electronics;
+        break;
+      case 'Footwear':
+        this.products = this.footwear;
+        break;
+      case 'Fashion':
+        this.products = this.fashion;
+        break;
+      default:
+        this.products = ['Select a Category'];
+        break;
+    }
+  }
+  public onProductChanged(){
+      this.searchResults = this.data.filter(x=>x.Name==this.selectedProductName);
+      this.searchedProduct = {
+        Name: this.searchResults[0].Name,
+        Price: this.searchResults[0].Price,
+        Photo: this.searchResults[0].Photo
+      };
+  }
+  public AddToCartClick()
+  {
+     this.cartItems.push(this.searchedProduct);
+     alert('Item Added to Cart');
+     this.GetCartItemsCount();
+  }
+  public ToggleCartDisplay() 
+{
+    this.showCart = (this.showCart==false)?true:false;
+  }
+  public DeleteCartItem(index:any)
+  {
+     let confirmDelete = confirm('Are you sure, want to Delete?');
+     if(confirmDelete==true) {
+       this.cartItems.splice(index, 1);
+       this.GetCartItemsCount();
+     }
+  }
+}
+-----------------------------------------------------------------------------------------------------------------
+Angular Service
+--------------------------
+It is used for creating user-defined business logic which can be used and reused in the application by injecting into any component.
+-------------------------------
+Different between service and function
+------------------------------------------------------
+function is can be used  within a single module .
+were as service can be used multiple modules or a single application (banking application)
+------------------------------------------
+steps to create a service.
+--------------------------------------
+step 1:- we will create a service in a separate module.
+step 2:- We will inject it to a component and use it.
+
+1)import {Injectable} from '@angular/core'
+2)@Injectable()
+3)providedIn:'root'
+---------------------------------------------------------------------------------------
+calculator.service.ts
+--------------------------------------------
+import { Component } from '@angular/core';
+import {Injectable} from '@angular/core'
+@Injectable({
+providedIn:'root'
+})
+export class Service1Component
+{
+public add(...params:number[]):number
+{
+  let result=0;
+  for(let val of params)
+  {
+    result=result+val;
+  }
+  return result;
+}
+}
+-------------------------------------------------------
+create a module calculator
+---------------------------------------------
+import { Component } from '@angular/core';
+import { Service1Component } from '../service.component';
+@Component({
+  selector: 'app-calc-service',
+  templateUrl: './calc-service.component.html',
+  styleUrls: ['./calc-service.component.css']
+})
+export class CalcServiceComponent {
+sum:number=0;
+constructor(calc:Service1Component)
+{
+  this.sum=calc.add(55,66,77,88,99);
+  console.log("The sum is "+this.sum);
+  alert("The sum is "+this.sum);
+}
+}
+-----------------------------------------------------------------------------------
+ providers: [Service1Component],
+  bootstrap: [CalcServiceComponent]
+-----------------------------------------------------------------
+example-2
+----------------------
+import { Component } from '@angular/core';
+import {Injectable} from '@angular/core'
+@Injectable({
+providedIn:'root'
+})
+export class Service2Component
+{
+public add(...params:number[]):number
+{
+  let result=0;
+  for(let val of params)
+  {
+    result=result+val;
+  }
+  return result;
+}
+public sub(x:number,y:number):number
+{
+  return x-y;
+}
+public mul(x:number,y:number):number
+{
+  return x*y;
+}
+public div(x:number,y:number):number
+{
+  return x/y;
+}
+}
+-----------------------------------------------------
+import { Component } from '@angular/core';
+import { Service2Component } from '../service2/service2.component';
+@Component({
+  selector: 'app-calculator1',
+  templateUrl: './calculator1.component.html',
+  styleUrls: ['./calculator1.component.css']
+})
+export class Calculator1Component {
+sum:number=0;
+sub:number=0;
+mul:number=0;
+div:number=0;
+constructor(x:Service2Component)
+{
+  this.sum=x.add(44,55,66,77,88);
+  console.log("The sum is "+this.sum);
+  alert("the sum is "+this.sum);
+  this.sub=x.sub(144,55);
+  console.log("The sub is "+this.sub);
+  alert("the sub is "+this.sub);
+}
+}
+-------------------------------------------------------------------------------
+providers: [Service1Component,Service2Component],
+  bootstrap: [Calculator1Component]
+----------------------------------------------------------------
+*Service2Component  it should not be there in declaration.
+---------------------------------------------------------------------------------------------
+example:-capcha program
+------------------------------------------
+import { Injectable } from '@angular/core';
+
+@Injectable({
+    providedIn: 'root'
+})
+export class CaptchaService
+{
+    public GenerateCode() {
+        let a = Math.random() * 10;   
+        let b = Math.random() * 10;
+        let c = Math.random() * 10;
+        let d = Math.random() * 10;
+        let e = Math.random() * 10;
+        let f = Math.random() * 10;
+        let code = `${Math.round(a)} ${Math.round(b)} ${Math.round(c)} ${Math.round(d)} ${Math.round(e)} ${Math.round(f)}`;
+        return code;
+    }
+}
+------------------------------------------------------------------------------------------------
+import { Component } from '@angular/core';
+import {CaptchaService} from '../service3';
+
+@Component({
+  selector: 'app-caplogin',
+  templateUrl: './caplogin.component.html',
+  styleUrls: ['./caplogin.component.css']
+})
+export class CaploginComponent 
+{
+  constructor(private x: CaptchaService)
+  {}
+  public code = this.x.GenerateCode();
+
+  public refreshClick()
+  {
+      this.code = this.x.GenerateCode();
+  }
+}
+--------------------------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+  <div class="form-group">
+  <label>User Name</label>
+  <div>
+      <input type="text" class="form-control">
+  </div>
+ </div>
+ <div class="form-group">
+  <label>Password</label>
+  <div>
+      <input type="password" class="form-control">
+  </div>
+ </div>
+ <div class="form-group">
+    <label>Verify Code</label>
+    <div>
+        {{code}} <button (click)="refreshClick()" class="btn"><span class="fa fa-sync"></span>Refresh</button>
+    </div>
+    <div>
+        <input type="text" class="form-control">
+    </div>
+ </div>
+ <div class="form-group">
+    <button class="btn btn-primary btn-block">Login</button>
+ </div>
+</div>
+</body>
+--------------------------------------------------------------------------------------------------------------
+providers: [CaptchaService],
+bootstrap: [CaploginComponent]
+---------------------------------------------------------------------------
+example-12
+------------------------
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-event-demo',
+  templateUrl: './event-demo.component.html',
+  styleUrls: ['./event-demo.component.css']
+})
+export class EventDemoComponent
+{
+  public msg:any;
+  public txtName:any;
+  public OnFocus() {
+    this.msg = 'Name in Block Letters';
+  }
+  public OnBlur() {
+    this.msg = '';
+    this.txtName = this.txtName.toUpperCase();
+  }
+  public onCut(){
+    this.msg = 'Removed and Placed on Clipboard';
+  }
+  public onCopy(){
+    this.msg = 'Copied to Clipboard';
+  }
+  public onPaste() {
+    this.msg = 'Inserted from Clipboard';
+  }
+}
+--------------------------------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+  <h2>Register for Cut/copy/paste</h2><hr>
+  <div class="form-group">
+      <label>User Name</label>
+      <div>
+          <input (cut)="onCut()" (copy)="onCopy()" (paste)="onPaste()" [(ngModel)]="txtName" (focus)="OnFocus()" (blur)="OnBlur()" class="form-control" type="text" placeholder="Block Letters Only">
+          <span>{{msg}}</span>
+      </div>
+  </div>
+</div>
+</body>
+-----------------------------------------------------------------------------------------------------------------
+Form Validation
+-----------------------------
+we have some directives to validate a form
+1)NgDirty :- It returns true when the value of the form element is modified.
+2)NgTouched:- It returns true when the element get focus.
+3)NgUntouched:- It returns true when the element never get focus.
+4)NgValid:- it returns true if all input validations are valid.
+5)NgInvalid:- it returns true if any input validations are invalid.
+6)NgErrors:-It is an object that collects all errors of input field.
+*required,Minlength,Maxlength,pattern,email validation.
+------------------------------------------------------------------------------------------------------------------------------
+7)NgModel:- dynamic element.it is model who's value is changed dynamically.
+example:- <input type="text" [(ngModel)]="username">
+8)NgClass:-dynamic assignment of css class.we can change the html element dynamically.
+example:-<div[ngClass]=" 'cssClassName' "> Your text </div>
+9)NgStyle:-it is defined inline style for html element.
+it will applied to single line.
+example:- <img [ngStyle]="styleObj" src="asserts/shoe.jpg" width="50" height="50">
+10)*ngIf :- It is used for if condition .
+example
+<div *ngIf="showImage">
+<img [src]="product.Photo" height="300" width="300">
+<img src="./assets/shoe.jpg" height="300" width="300">
+</div>
+11)*ngFor :- It is used for iterating the data
+example:-
+<tr *ngFor="let item of cartItems;">
+                        <td>{{item.Name}}</td>
+                        <td>{{item.Price}}</td>
+                        <td><img width="50" height="50" [src]="item.Photo"></td>
+                        <td>
+12)*ngSwitch:- In this according to the user switch the control will jump to corresponding case.
+ switch(this.selectedCategoryName)
+    {
+      case 'Electronics':
+        this.products = this.electronics;
+        break;
+      case 'Footwear':
+        this.products = this.footwear;
+        break;
+      case 'Fashion':
+        this.products = this.fashion;
+        break;
+      default:
+        this.products = ['Select a Category'];
+        break;
+    }
+
+--------------------------------------------------------------------------------------------------------------------------
+example-13
+-----------------------
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-valid',
+  templateUrl: './valid.component.html',
+  styleUrls: ['./valid.component.css']
+})
+export class ValidComponent {
+
+}
+--------------------------------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+
+  <form #frmRegister="ngForm">
+    <dl>
+        <h2>Register User</h2>
+        <dt>User Name</dt>
+        <dd>
+            <input type="text" name="txtName" ngModel #txtName="ngModel" class="form-control" required>
+      <span *ngIf="frmRegister.submitted && txtName.invalid || txtName.touched && txtName.invalid" class="text-danger">Name Required</span>
+        </dd>
+        <dt>Mobile</dt>
+        <dd>
+            <input type="text" name="txtMobile" ngModel #txtMobile="ngModel" class="form-control" required>
+            <span *ngIf="frmRegister.submitted && txtMobile.invalid || txtMobile.touched && txtMobile.invalid" class="text-danger">Mobile Number Required</span>
+        </dd>
+        <dt>Adhar Number</dt>
+        <dd>
+            <input type="text" name="txtAdhar" ngModel #txtAdhar="ngModel" class="form-control" required>
+            <span *ngIf="frmRegister.submitted && txtAdhar.invalid || txtAdhar.touched && txtAdhar.invalid" class="text-danger">Adhar Number Required</span>
+        </dd>
+
+        <dt>Password</dt>
+        <dd>
+            <input type="password" name="txtPass" ngModel #txtPass="ngModel" class="form-control" required>
+            <span *ngIf="frmRegister.submitted && txtPass.invalid || txtPass.touched && txtPass.invalid" class="text-danger">Password Required</span>
+        </dd><br>
+
+        <button class="btn btn-primary btn-block">Register</button>
+    </dl>
+  </form>
+</div>
+</body>
+----------------------------------------------------------------------------------------------------------------------------
+example-13
+----------------------
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-keyevent',
+  templateUrl: './keyevent.component.html',
+  styleUrls: ['./keyevent.component.css']
+})
+export class KeyeventComponent
+{
+  public users = [
+    {UserName: 'john'},
+    {UserName: 'john12'},
+    {UserName: 'john_nit'},
+    {UserName: 'david'}
+  ];
+  public userName:any;
+  public userMsg:any;
+  public isUserValid = false;
+  public isUserInvalid = false;
+
+  public password:any;
+  public showCapsWarning = false;
+
+  public VerifyUserOnKeyUp(){
+    if (this.userName.length < 3) {
+      this.userMsg = 'User Name too short..';
+      this.isUserInvalid = true;
+      this.isUserValid = false;
+    } else {
+      for(var item of this.users)
+ {
+        if(item.UserName == this.userName)
+{
+          this.userMsg = 'User Name Taken - Try Another';
+          this.isUserInvalid = true;
+          this.isUserValid = false;
+          break;
+        } else {
+          this.userMsg = 'User Name Available';
+          this.isUserInvalid = false;
+          this.isUserValid = true;
+        }
+      }
+    }
+  }
+  public VerifyPassword(e:any)
+  {
+      if(e.keyCode>=65 && e.keyCode<=90)
+{
+          this.showCapsWarning = true;
+      } else {
+        this.showCapsWarning = false;
+      }
+  }
+}
+------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+  <h2>Register User</h2>
+  <div class="form-group">
+    <label>User Name</label>
+    <div>
+        <input [ngClass]="{'errorStyle':isUserInvalid, 'validStyle':isUserValid}" (keyup)="VerifyUserOnKeyUp()" [(ngModel)]="userName" type="text" class="form-control">
+        <span [ngClass]="{'text-success':isUserValid, 'text-danger':isUserInvalid}">{{userMsg}}</span>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Password</label>
+    <div>
+        <input (keypress)="VerifyPassword($event)" [(ngModel)]="password" type="password" class="form-control">
+        <div *ngIf="showCapsWarning">
+            <span class="fa fa-exclamation-triangle text-warning"></span>
+            <span class="text-warning">Warning CAPS is ON</span>
+        </div>
+    </div>
+  </div>
+</div>
+</body>
+---------------------------------------------------------------------------------------------
+.container-fluid {
+  margin:auto;
+  padding:20px;
+  width:300px;
+  align-items: center;
+  justify-content: center;
+}
+.errorStyle {
+  border:1px solid red;
+  box-shadow: 2px 3px 4px red;
+}
+.validStyle {
+  border:1px solid green;
+  box-shadow: 2px 3px 4px green;
+}
+---------------------------------------------------------------------------
+Lifecycle hook of Angular.
+--------------------------------------------
+ngOnChanges - When the value of a data bound property changes, then this method is called.
+
+ngOnInit - This is called whenever the initialization of the directive/component after Angular first displays the data-bound properties happens.
+
+ngDoCheck - This is for the detection and to act on changes that Angular can't or won't detect on its own.
+
+ngAfterContentInit - This is called in response after Angular projects external content into the component's view.
+
+ngAfterContentChecked - This is called in response after Angular checks the content projected into the component.
+
+ngAfterViewInit - This is called in response after Angular initializes the component's views and child views.
+
+ngAfterViewChecked - This is called in response after Angular checks the component's views and child views.
+
+ngOnDestroy - This is the cleanup phase just before Angular destroys the directive/component.
+      
+example of implementing one lifecycle hook. 
+ app.component.ts 
+-----------------------------------------------------------------
+import {    Component } from '@angular/core';  
+@Component ({ 
+   selector: 'my-app', 
+   template: '<div> {{values}} </div> ' 
+}) 
+export class AppComponent { 
+   values = ' '; 
+   ngOnInit() { 
+      this.values = "Hello"; 
+   } 
+--------------------------------------------------------------------------------------------------------------
+PPTs
+1)data binding
+2)component to component communication
+3)life cycle hook.
+4)directives in angular
+--------------------------------------------
+In Angular, directives are one of the fundamental building blocks used to extend and modify the behavior of HTML elements. They allow you to attach custom functionality to existing HTML elements or create reusable components. Angular provides several types of directives:
+
+Component Directives: Components are the most common type of directive in Angular. They are used to create reusable UI components with their own templates, styles, and behavior. Components have a view associated with them and encapsulate the HTML, CSS, and logic for that particular component.
+
+Structural Directives: Structural directives modify the structure of the DOM by adding or removing elements. They are denoted by an asterisk (*) prefix in the template and are used to conditionally render or repeat elements. Examples of structural directives in Angular include ngIf, ngFor, and ngSwitch.
+
+Attribute Directives: Attribute directives modify the behavior or appearance of an element, component, or another directive. They are used to apply custom logic or styles to HTML elements. Attribute directives can be used to create custom validations, control visibility, handle events, and more. Examples of attribute directives in Angular include ngClass, ngStyle, and ngModel.
+
+Custom Directives: In addition to the built-in directives provided by Angular, you can also create your own custom directives. Custom directives allow you to encapsulate reusable behavior and apply it to elements in your application. You can create custom attribute directives or custom structural directives depending on your requirements.
+
+To use a directive in Angular, you typically import it into your module or component and apply it to the HTML element using the appropriate syntax. For example, to use the ngIf structural directive to conditionally render an element based on a condition, you would use the following syntax:
+
+<div *ngIf="condition">Content to be rendered</div>
+Here, *ngIf is the directive, and condition is a boolean expression that determines whether the element should be rendered or not.
+
+Overall, directives are a powerful feature in Angular that enable you to create dynamic, reusable, and interactive components for your application.
+--------------------------------------------------------------------------------------------------------------
+Life cycle hook
+--------------------------
+In Angular, lifecycle hooks are methods provided by Angular that allow you to tap into specific moments during the life cycle of a component or directive. These hooks provide a way to perform actions at key points in the component's life cycle, such as initialization, change detection, destruction, etc. Here are the most commonly used lifecycle hooks in Angular:
+
+ngOnInit: This hook is called after Angular has initialized the component's properties and set the input properties. It is commonly used for initialization tasks, such as retrieving data from a server or initializing variables.
+
+ngOnChanges: This hook is called when one or more of the component's input properties have changed. It receives a SimpleChanges object that contains the previous and current values of the input properties. It is commonly used to respond to input property changes and perform actions based on the new values.
+
+ngAfterViewInit: This hook is called after Angular has fully initialized the component's view and child views. It is commonly used to perform initialization tasks that require access to the component's view, such as accessing ViewChild elements or manipulating the DOM.
+
+ngOnDestroy: This hook is called just before Angular destroys the component. It is commonly used for cleanup tasks, such as unsubscribing from observables, cancelling timers, or releasing resources.
+
+ngDoCheck: This hook is called during every change detection cycle and allows you to implement your own custom change detection logic. It is commonly used when you need fine-grained control over change detection and want to optimize performance.
+
+ngAfterContentInit: This hook is called after Angular has projected external content into the component's view. It is commonly used when working with content projection and need to perform initialization tasks on projected content.
+
+ngAfterContentChecked: This hook is called after Angular has checked the component's projected content for changes. It is commonly used when you need to perform actions after the content has been checked for changes.
+
+ngAfterViewChecked: This hook is called after Angular has checked the component's view and child views for changes. It is commonly used when you need to perform actions after the view has been checked for changes.
+
+These are some of the major lifecycle hooks available in Angular. By implementing these hooks in your components or directives, you can control and respond to different stages of their life cycle, allowing you to perform specific actions at the appropriate moments.
+------------------------------------------------------------------------------------
+<input type="text" id="name" name="name" class="form-control"
+      required minlength="4" appForbiddenName="bob"
+      [(ngModel)]="txtBookName" #name="ngModel">
+<div *ngIf="name.invalid && (name.dirty || name.touched)"
+    class="alert">
+  <div *ngIf="name.errors?.['required']">
+    Name is required.
+  </div>
+  <div *ngIf="name.errors?.['minlength']">
+    Name must be at least 4 characters long.
+  </div>
+  <div *ngIf="name.errors?.['forbiddenName']">
+    Name cannot be Bob.
+  </div>
+</div> 
+--------------------------------------------------------------------------------------
+how to unbind ng modules?
+----------------------------------------------
+custom binding in angular?
+--------------------------------------------------------------------
+<pre ngNonBindable>{{ name }}</pre>
+
+The <pre ngNonBindable>{{ name }}</pre> syntax in Angular is used to prevent Angular from parsing and evaluating the expression ({{ name }}) inside the element. The ngNonBindable directive tells Angular to treat the contents of the element as plain text and not perform any data binding or interpolation.
+
+By using ngNonBindable, Angular will render the element as-is without attempting to evaluate any expressions within it. This can be useful in scenarios where you want to display the literal expression {{ name }} instead of its evaluated value.
+
+------------------------------------------------------------------------------------------------
+Angular HTTP client and HTTP request
+------------------------------------------------------------
+HTTP is a protocal used by internet.we have HTTPs for security.
+The client will give the request to the server.
+In this angular is a client page which will give the request to the middleware server.
+Angular provides an HTTP client module that allows you to make HTTP requests and handle reponses in your angular Application.
+The response will be comming from the server side program. Example spring or springboot which will be running on the tomcat server.It is connected to the database like oracle or Mysql.
+--------------------------------------------------
+gmail--login page --------username/password (request)
+server --reads the username/password
+authentication check with the database and then the server responds back to the 
+client page .if username/password is correct it will redirect to mailbox.
+other wise invalid username/password.
+This is the response which is handled by the client.
+------------------------------------------------------------------------------------------------
+To import for working with HTTPClient
+----------------------------------------------------------------
+import {HttpClient , HttpHeader} from '@angular/common/http';
+import {Observable } from 'rxjs';
+-----------------------------------------------------------------------------------------------------------
+Inject the 'HttpClient' service into your component or service constructor.
+
+constructor(private http: HttpClient){}
+---------------------------------------------------------------------
+To read or get HTTP request
+
+getData(): Observable<any> {
+return this.http.get<any>('https://api.abc.com/data');
+}
+----------------------------------------------------------------------------------
+Observable :- An Observable is a stream of events or data .
+They return from the Angular method--->http.get();
+--------------------------------------------------------------------------------------
+Make a HTTP post request: used for modify the data.
+
+postData(data:any) : Observable<any>
+{
+const headers = new HttpHeaders({'Content-type': 'application/json'});
+return this.http.post.<any>('https://api.abc.com/data',data, {headers});
+}
+---------------------------------------------------------------------------------------------------
+Subscribing kicks off the observable stream .without a subscribe the stream won't start.
+Subscribing is followed by Observable.
+---------------------------------------------------------------------------------------------------
+example:-
+----------------
+this.getData().subscribe((response) => {
+console.log(response);
+}, (error) =>{
+console.error(error);
+});
+-------------------------------------------------------------
+
+https://api.abc.com/data --it is known as end point .
+
+------------------------------------------------------------------------------------
+How to read local JSON files in Angular
+-----------------------------------------------------------------
+step 1:- user.service.ts
+-------------------------------------------------------------------
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { map, Observable } from 'rxjs';
+import { UserInformation } from './model/userinformation';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class UserService {
+  constructor(private http: HttpClient) {}
+
+  public getUsers(): Observable<UserInformation> {
+    const url = 'https://reqres.in/api/users?page=1';
+      return this.http.get<UserInformation>(url);
+  }
+}
+------------------------------------------------------
+we should have a dummy JSON url.
+it provides the url from where data has to be collected.
+we have this for out dependency injection.
+1)import { Injectable } from '@angular/core';
+---------------------------------------------------------------------------------------
+HTTPClient  is service which is injected to our component.
+-------------------------------------------------------------------------
+import { HttpClient } from '@angular/common/http';
+ constructor(private http: HttpClient) {}
+-----------------------------------------------------------------
+Observable is used to display the data using http.get
+------------------------------------------------------------------------
+public getUsers(): Observable<UserInformation> 
+{
+    const url = 'https://reqres.in/api/users?page=1';
+       return this.http.get<UserInformation>(url);
+
+}
+--------------------------------------------------------------------------------------
+import { UserInformation } from './model/userinformation';
+-------------------------------------------------------------------------------------
+UserInformation
+-----------------------
+export interface User {
+    avatar: string;
+    email: string;
+    first_name: string;
+    id: Number;
+    last_name: string;
+}
+------------------------------------------------------
+import { User } from "./user";
+
+export interface UserInformation {
+    page: Number;
+    per_page: Number;
+    total: Number;
+    total_pages: Number;
+    data: User[];
+}
+-------------------------------------------------------
+user.component.html
+----------------------------
+<li *ngFor="let user of userInfo.data">
+    <span>{{user.first_name}} {{user.last_name}}</span>
+</li>
+----------------------------------------------------------------------------------
+user.component.ts
+-----------------------------------------------
+import { Component, OnInit } from '@angular/core';
+import { User } from '../model/user';
+import { UserInformation } from '../model/userinformation';
+import { UserService } from '../user.service';
+
+@Component({
+  selector: 'app-user',
+  templateUrl: './user.component.html',
+  styleUrls: ['./user.component.scss']
+})
+export class UserComponent implements OnInit {
+
+
+  userInfo : UserInformation;
+
+  constructor(public userService: UserService) { 
+    this.userInfo = {} as UserInformation;
+  }
+
+  ngOnInit(): void {
+    this.userService.getUsers().subscribe((response:UserInformation) => {
+      debugger;
+      this.userInfo = response;
+      return;
+      console.log(response);
+      this.userInfo.page = response?.page;
+      this.userInfo.per_page = response?.per_page;
+      //this.userInfo.support = response.support;
+      this.userInfo.total = response?.total;
+      this.userInfo.total_pages = response?.total_pages;
+      this.userInfo.data = response?.data?.map(item => {
+        var user = {} as User;
+        user.avatar = item?.avatar;
+        user.email = item?.email;
+        user.first_name = item?.first_name;
+        user.last_name = item?.last_name;
+        user.id = item?.id;
+        return user;
+      });
+    });
+  }
+
+}
+-------------------------------------------------------------------
+' ? ' is used for optional property in typescript.
+
+example:-
+interface user
+{
+name:string;
+age?:number;
+}
+const user1:user ={name:'sandip'};
+const user2:user ={name:'amit',age:40};
+
+--------------------------------------------------------------------------
+Angular Form
+-------------------------
+1)Template Driven forms
+2)Reactive forms or Model driven forms.
+--------------------------------------------------------------------
+1)Template Driven form :-
+--------------------------------
+a)A template driven forms is a dynamic forms than can handle client side form .
+b)These forms are heavy on page and will take more time rendering (genrating output)
+c)These form and their elements in template are configure by using the directive.
+i)ngForm   ii)ngModel
+d)ngForm is defined in 'forms module' and used to handle <form> element dynamically.
+ngModel is also defined in the 'forms module' and used to handle input element dynamically.[like text,password,setect..]
+
+example:-
+-----------------
+import {FormsModule } from '@angular/forms';
+
+import :[FormsModule],
+
+------------------------------------------
+app.component.html
+-----------------------------
+<form #frmRegsiter="ngForm" (submit)="onclick(frmRegsiter.value)">
+
+<div class="form-group">
+<label>Name</label>
+<input type="text" class="form-control" name=t1 required #t1="ngModel" ngModel>
+</div>
+-------------------------------------------------------------------------------------------------------------------
+2)Reactive forms or Model driven forms.
+
+Reactive forms or Model driven forms follows a model-driven approach to handle form input whose values can be changed over time.
+In reactive form you can create and update a simple form control.
+We can also use multiple controls in a group.
+Validate form values and implement more advance forms.
+
+import {ReactiveFormModule} from '@angular/forms';
+import:[ReactiveFormModule],
+
+-------------------------------------------------------------------------------------------
+
+<label>
+Name:
+<input type="text" [formControl]="name">
+</label>
+------------------------------------------------------------
+We have registered the form contol to the name input element .
+Now the form control and DOM element communicate with each other and the view  reflects the changes in the model.The model reflects the changes to the view.
+
+---------------------------------------
+Example-8
+------------------
+example1.ts
+------------------------------
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-example1',
+  templateUrl: './example1.component.html',
+  styleUrls: ['./example1.component.css']
+})
+export class Example1Component
+{
+public product=[
+{Name:'Samsung TV',Price:45000.00},
+{Name:'Sony TV',Price:75000.00},
+{Name:'LG TV',Price:35000.00},
+];
+public txtName:any; <---global variable (scope through out the program).
+public txtPrice:any;
+
+public NewProduct=
+{
+  Name:"",  <--local variable which are inside the function (scope is within the function)
+  Price:0
+}
+
+public AddProduct()
+{
+  alert('Product Added');
+  this.NewProduct={
+    Name:this.txtName,  <--- assigning the gobal variable to local variable.
+    Price:this.txtPrice
+  };
+  this.product.push(this.NewProduct)
+  this.txtName='',
+  this.txtPrice=0
+}
+
+public DeleteProduct(index:number)
+{
+var status=confirm("Are you sure you want to delete");
+if(status==true)
+{
+this.product.splice(index,1);
+}
+}
+}
+---------------------------------------------------------------------------
+example1.html
+--------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+  <div class="AddProduct">
+    <h2>Add New Product</h2>
+    <div class="form-group">
+      <label>Name</label>
+      <div>
+<input [(ngModel)]="txtName" type="text" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>Price</label>
+        <div>
+  <input [(ngModel)]="txtPrice" type="text" class="form-control">
+        </div>
+    </div>
+  </div>
+  <button (click)="AddProduct()" class="btn btn-success">Add Product</button>
+  </div>
+
+<div>
+<h2>Product List</h2>
+<table>
+<tr><th>Name</th><th>Price </th><th>Action</th></tr>
+<tr *ngFor="let product of product; let i=index"><td>{{product.Name}}</td><td>{{product.Price}}</td>
+<td><button class="btn btn-danger" (click)="DeleteProduct(i)">Delete Product</button></td>
+</tr>
+</table>
+</div>
+</div>
+-------------------------------------------------------------------------------------------
+example1.css
+-------------------------------
+.AddProduct
+{
+  width:300px;
+  border:2px solid darkblue;
+  padding:10px;
+  margin: 20px;
+}
+
+mytable,tr,td,th
+{
+  width:900px;
+  border:2px solid darkblue;
+  padding:10px;
+  margin: 20px;
+}
+---------------------------------------------------------------------------------------
+Service
+---------------
+1)It is a pre-defined business logic which can be reused in the application by injecting into any component.
+
+what is provider?
+Provider is an object that implements on of the "Provider" interfaces.
+Provider defines how to obtain an injectable dependency associated with a dependeny injection token.
+Injector uses a provider to create a new intance of dependency for a class.
+Angular registers its own providers with every injector for service.
+Angular provides different types of providers
+1)ValueProvider
+2)ClassProvider
+3)TypeProvider
+4)ConstructorProvider
+5)FactoryProvider
+
+syntax:-
+import {injectable} from form '@angular/core';
+
+@Injectable({
+providedIn:'root'})
+--------------------------------
+providedIn:'root' :- This is an option of the @Injectable decorator.
+1)It specifies the root injector as the provider of this service.
+ 2)A single instance of this service shared across the entire application.This is a global or application wide scope.
+3)by using providedIn:'root' we need not manually regsiter the service in the application or NgModule providers array, as Angular will take care of providing the service at the root level automatically.
+----------------------------------------------------
+@Injectable is a typescript decorator provided by angular that marks the class as a service and allows it to be managed by angular dependency injection system.
+
+-----------------------------------------------------------------------------------
+Angular provides different types of providers
+1)ValueProvider :In a value provider it returns a fixed value for dependency injection.
+Injecting fixed value into any component or service using the constructor.
+example:-
+------------------
+book.ts
+---------------
+export class Book {
+	constructor(public bookname: string, public version: string){}
+}
+-------------------------------------------------
+book.component.ts
+----------------------------------
+import { Component, OnInit, InjectionToken, Inject } from '@angular/core';
+import { Book } from './book';
+
+const Angular_Book = new Book('Learn Angular', 'Version 13');
+export const Angular_Message = new InjectionToken<string>('Learn Angular 13!');
+
+@Component({
+    selector: 'book',
+    providers: [
+	    { provide: Book, useValue: Angular_Book },
+		{ provide: Angular_Message, useValue: 'Learn Angular 13 step by step' }
+	],
+    template: `
+	     <p>Book Name: <b>{{book.bookname}}</b> </p>
+		 <p>Version: <b>{{book.version}}</b></p>
+		 <p>Message: <b>{{message}}</b> </p>
+	`
+})
+export class BookComponent1 implements OnInit {
+	constructor(public book: Book,@Inject(Angular_Message) public message: string) { }
+
+	ngOnInit() {
+	}
+}
+
+----------------------------------------------------
+value.component.ts
+--------------------------------
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-value',
+  template: `<book></book>`,
+
+})
+export class ValueComponent {
+
+}
+-----------------------------------------------------------------------------
+module.ts
+--------------------------------------------
+import {ValueComponent}
+import {BookComponent1}
+
+declaration
+{
+ValueComponent,
+BookComponent,
+},
+
+bootsrap:[ValueComponent]
+----------------------------------------------------------
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
