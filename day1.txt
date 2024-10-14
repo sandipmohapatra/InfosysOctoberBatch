@@ -1,3 +1,9 @@
+Task for today 
+Read the project document and try to understand 
+-------------------------------------------------------------------------------------
+
+
+
 GitHub link:-  https://github.com/sandipmohapatra/InfosysOctoberBatch
 ------------------------------------------------------------------------------------------------------------------
 1)read the project document
@@ -19,6 +25,9 @@ https://nodejs.org/en/download/prebuilt-installer/current
 --------------------------------------------------------------------------------------------------------------------------
 vs code installation
 --------------------------------------------------------------------
+sts bundle
+postman
+------------------------------------------------
 
 
  
