@@ -6,7 +6,7 @@ Ilamathi N
 Karan Siddiqui
 Keerthi Naineni
 ----------------------------------
-Group-2
+Group-2(ppt submitted)
 --------------------------
 Lavanya Kammela
 Loga Krishna
@@ -31,8 +31,13 @@ Ranjit K
 Janvi Singh
 Suryaja 
 -------------------------------------------
-
-
+Technology to be used
+--------------------------------------
+Angular JS
+Express JS
+JSON
+MySQL
+-------------------------------------------------
 
 
 
