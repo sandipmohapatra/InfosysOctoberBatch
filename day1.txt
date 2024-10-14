@@ -25,9 +25,26 @@ https://nodejs.org/en/download/prebuilt-installer/current
 --------------------------------------------------------------------------------------------------------------------------
 vs code installation
 --------------------------------------------------------------------
-sts bundle
+STS bundle
 postman
+MYSQL 8.0
 ------------------------------------------------
+Spring Boot + Angular
+-----------------------------------------
+https://www.youtube.com/watch?v=LE3KvvhkUkM
+https://www.youtube.com/watch?v=Do87D4TJ9M8
+https://www.youtube.com/watch?v=lpPiM5MIAoQ
+https://www.youtube.com/watch?v=Iax4vA4MEPU
+
+Spring Boot + ReactJS
+---------------------------------------------
+https://www.youtube.com/watch?v=kGXgibT2vyw
+https://www.youtube.com/watch?v=-UJByPVdLXo
+https://www.youtube.com/watch?v=pfRWCTTYDdM
+----------------------------------------------------
+https://www.youtube.com/watch?v=inGt9b6lQ0U
+https://www.onhandtrick.com/spring-boot-react-crud-example/
+----------------------------------------------------------------------------------------
 
 
  
