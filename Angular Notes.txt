@@ -23,6 +23,7 @@ steps for Installation
 --------------------------------------
 steps for Installation
 --------------------------------------
+*https://nodejs.org/en  (download and install nodejs) 
 1)npm install -g @angular/cli@15
 2)C:\projects-workspace>ng new batch237
 3)C:\projects-workspace\batch201>ng serve 
