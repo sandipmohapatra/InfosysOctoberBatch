@@ -1,0 +1,51 @@
+Appcomponent.ts
+------------------------------
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'darshan',
+  template :`
+ MENU<ul>
+ <li><a [routerLink]="['/register']">Register Page</a></li>
+ <li><a [routerLink]="['/contact']">Contact Page</a></li>
+</ul><hr>
+<router-outlet></router-outlet> `
+})
+export class AppComponent
+{
+}
+-------------------------------------------------------------------------------------
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import {Routes,RouterModule} from '@angular/router'; <----------------------------------------
+import { AppRoutingModule } from './app-routing.module';  
+import { AppComponent } from './app.component';
+import { RegisterComponent } from './register/register.component';
+import { ContactComponent } from './contact/contact.component';
+
+
+const appRoutes: Routes =                  <----------------------------------------------
+[
+  {path:'register',component:RegisterComponent},
+  {path:'contact',component:ContactComponent},
+];
+
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    RegisterComponent,
+    ContactComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    RouterModule.forRoot(appRoutes) <---------------------------------------------
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+------------------------------------------------------------------------------
+create register and contact module
+----------------------------------------------------------
