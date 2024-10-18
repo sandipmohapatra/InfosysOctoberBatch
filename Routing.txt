@@ -1,51 +1,59 @@
-Appcomponent.ts
-------------------------------
+app.component.ts
+-------------------------------------------
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'darshan',
+  selector: 'app-root',
   template :`
  MENU<ul>
  <li><a [routerLink]="['/register']">Register Page</a></li>
  <li><a [routerLink]="['/contact']">Contact Page</a></li>
-</ul><hr>
+ <li><a [routerLink]="['/feedback']">Feedback Page</a></li>
+ <li><a [routerLink]="['/service']">Service Page</a></li>
+  </ul><hr>
 <router-outlet></router-outlet> `
+
 })
-export class AppComponent
-{
+export class AppComponent {
+  title = 'batch240';
 }
--------------------------------------------------------------------------------------
+-----------------------------------------------------------------
+app.module.ts
+------------------------------
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {Routes,RouterModule} from '@angular/router'; <----------------------------------------
-import { AppRoutingModule } from './app-routing.module';  
+import {Routes,RouterModule} from '@angular/router'; 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RegisterComponent } from './register/register.component';
 import { ContactComponent } from './contact/contact.component';
+import { RegisterComponent } from './register/register.component';
+import { FeedbackComponent } from './feedback/feedback.component';
+import { ServiceComponent } from './service/service.component';
 
-
-const appRoutes: Routes =                  <----------------------------------------------
-[
+const appRoutes: Routes =   
+[               
   {path:'register',component:RegisterComponent},
   {path:'contact',component:ContactComponent},
-];
+  {path:'feedback',component:FeedbackComponent},
+  {path:'service',component:ServiceComponent},
+  ];
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    ContactComponent,
     RegisterComponent,
-    ContactComponent
+    FeedbackComponent,
+    ServiceComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(appRoutes) <---------------------------------------------
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-------------------------------------------------------------------------------
-create register and contact module
-----------------------------------------------------------
+-----------------------------------------------------------------------
