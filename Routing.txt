@@ -57,3 +57,47 @@ const appRoutes: Routes =
 })
 export class AppModule { }
 -----------------------------------------------------------------------
+BootStrap
+-------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<header>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <body id="myPage">
+<div class="w3-top">
+ <div class="w3-bar w3-theme-d2 w3-left-align">
+  <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-hover-white w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
+  <a class="w3-bar-item w3-button w3-coral"><i class="fa fa-home w3-margin-right"></i>Mphasis Batch-2023</a>
+  <a routerLink="home" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Home</a>
+  <div class="w3-dropdown-hover w3-hide-small">
+    <button class="w3-button" title="Notifications">Registration <i class="fa fa-caret-down"></i></button>
+    <div class="w3-dropdown-content w3-card-4 w3-bar-block">
+      <a routerLink="/register" class="w3-bar-item w3-button">EmployeeRegistration</a>
+      <a routerLink="/register"class="w3-bar-item w3-button">CustomerRegistration</a>
+    </div>
+    </div>
+  <a [routerLink]="['/contact']" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Contact</a>
+  <a [routerLink]="['/feedback']" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Feedback</a>
+  <a [routerLink]="['/service']" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Service</a>
+
+</div>
+<router-outlet></router-outlet>
+</div>
+    </body>
+    </header>
+---------------------------------------------------------------------------------------------
+
+
