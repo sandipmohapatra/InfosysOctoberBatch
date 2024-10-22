@@ -1,0 +1,24 @@
+Install JSON Server
+step 1:npm install -g json-server
+------------------------------------------------------------------------------
+step 2:Create a db.json file
+{
+  "employees": [
+    {
+      "id": 1,
+      "name": "Sandip",
+      "email": "sandip@gmail.com",
+      "phone": 9988776655
+    },
+    {
+      "id": 2,
+      "name": "Kiran",
+      "email": "kiran@gmail.com",
+      "phone": 9988776600
+    }
+    ]
+}
+----------------------------------------------------------------------------------
+step 3:Start the JSON Server
+json-server --watch db.json
+------------------------------------------------------------------------------------
