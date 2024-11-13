@@ -1,20 +1,12 @@
 Group-1
 --------------------------
-Anukrati Agarwal
-Gaurav Thawal
-Ilamathi N
-Karan Siddiqui
-Keerthi Naineni
-----------------------------------
-Group-2(ppt submitted)
---------------------------
 Lavanya Kammela
 Loga Krishna
 Manish Singh
 Miriyala Bindu
 Vemula Sushma
 --------------------------------------
-Group-3
+Group-2
 ---------------------------
 Naveen Kumar
 Prakhar Singh
@@ -23,7 +15,7 @@ Sachin Kori
 Sai  Sujitha Kumari
 Sujith
 --------------------------------------
-Group-4
+Group-3
 ---------------------
 Vishnu Priya
 Suman Shekhar
@@ -31,6 +23,10 @@ Samhitha Singirikonda
 Ranjit K
 Janvi Singh
 Suryaja 
+Anukrati Agarwal
+Gaurav Thawal
+Ilamathi N
+Keerthi Naineni
 -------------------------------------------
 Technology to be used
 --------------------------------------
